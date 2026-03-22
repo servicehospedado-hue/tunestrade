@@ -12,7 +12,11 @@ from datetime import datetime
 from collections import deque
 import websockets
 from websockets.exceptions import ConnectionClosed
-from websockets.legacy.client import WebSocketClientProtocol
+try:
+    from websockets.legacy.client import WebSocketClientProtocol
+except ImportError:
+    # websockets >= 14 removeu o módulo legacy
+    WebSocketClientProtocol = None  # type: ignore
 from loguru import logger
 
 from .models import ConnectionInfo, ConnectionStatus, ServerTime
@@ -171,11 +175,16 @@ class AsyncWebSocketClient:
                 ssl_context.minimum_version = ssl.TLSVersion.TLSv1_2
 
                 # Connect with timeout
+                # websockets >= 14 usa 'additional_headers', versões antigas usam 'extra_headers'
+                import websockets as _ws
+                _ws_version = tuple(int(x) for x in _ws.__version__.split(".")[:2])
+                _header_kwarg = "additional_headers" if _ws_version >= (14, 0) else "extra_headers"
+
                 ws = await asyncio.wait_for(
                     websockets.connect(
                         url,
                         ssl=ssl_context,
-                        extra_headers=DEFAULT_HEADERS,
+                        **{_header_kwarg: DEFAULT_HEADERS},
                         ping_interval=CONNECTION_SETTINGS["ping_interval"],
                         ping_timeout=CONNECTION_SETTINGS["ping_timeout"],
                         close_timeout=CONNECTION_SETTINGS["close_timeout"],

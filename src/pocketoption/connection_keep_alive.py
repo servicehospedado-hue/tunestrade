@@ -7,7 +7,11 @@ from typing import Optional, List, Callable, Dict, Any
 from datetime import datetime, timedelta
 from loguru import logger
 from websockets.exceptions import ConnectionClosed
-from websockets.legacy.client import connect, WebSocketClientProtocol
+try:
+    from websockets.legacy.client import connect, WebSocketClientProtocol
+except ImportError:
+    from websockets import connect  # type: ignore
+    WebSocketClientProtocol = None  # type: ignore
 
 from .models import ConnectionInfo, ConnectionStatus
 from .constants import REGIONS
