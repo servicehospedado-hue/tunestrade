@@ -979,6 +979,26 @@ class TradeExecutor:
             # Atualizar estado de cooldown
             system_cooldown = self._get_system_cooldown(signal)
             user_cooldown = self._get_user_cooldown(user_id, user_config)
+
+            # Se stop sequencial está ativo e o ciclo ainda não foi completado,
+            # suprimir o cooldown do usuário — operar sem pausa até atingir o limite.
+            cfg_now = state.config
+            win_seq_active = (
+                getattr(cfg_now, 'stop_win_seq_enabled', False)
+                and int(getattr(cfg_now, 'stop_win_seq', 0) or 0) > 0
+                and state.consecutive_wins > 0
+            )
+            loss_seq_active = (
+                getattr(cfg_now, 'stop_loss_seq_enabled', False)
+                and int(getattr(cfg_now, 'stop_loss_seq', 0) or 0) > 0
+                and state.consecutive_losses > 0
+            )
+            if win_seq_active or loss_seq_active:
+                logger.info(
+                    f"[TRADE] Cooldown usuário suprimido para {user_id} — ciclo de stop sequencial em andamento "
+                    f"(wins={state.consecutive_wins}, losses={state.consecutive_losses})"
+                )
+                user_cooldown = 0
             
             now = datetime.now()
             strategy_name = signal.get("strategy", "")
