@@ -14,6 +14,15 @@ from contextlib import asynccontextmanager
 from dotenv import load_dotenv
 load_dotenv()
 
+import os
+from loguru import logger as _loguru_logger
+
+# Configurar loguru com o LOG_LEVEL do .env ANTES de qualquer import que use loguru
+_log_level = os.getenv("LOG_LEVEL", "info").upper()
+_loguru_logger.remove()
+_loguru_logger.add(sys.stderr, level=_log_level, colorize=False,
+                   format="{time:YYYY-MM-DD HH:mm:ss.SSS} | {level:<8} | {name}:{function}:{line} - {message}")
+
 import uvicorn
 
 # IMPORTANTE: Importar LogManager ANTES do basicConfig para garantir
@@ -32,8 +41,9 @@ if sys.platform == 'win32':
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 # Configuração de logging básica (complementar ao LogManager)
+_stdlib_level = getattr(logging, os.getenv("LOG_LEVEL", "info").upper(), logging.INFO)
 logging.basicConfig(
-    level=logging.INFO,
+    level=_stdlib_level,
     format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
     encoding='utf-8',
     errors='replace'

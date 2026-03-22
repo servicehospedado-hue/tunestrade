@@ -1,0 +1,35 @@
+TASK: TASK 8 — Deploy Railway (websockets fix)
+STATUS: completed (deploy funcional)
+DATE: 2026-03-22 04:45:00
+
+=== PROBLEMA RESOLVIDO ===
+BaseEventLoop.create_connection() got an unexpected keyword argument 'extra_headers'
+
+CAUSA: websockets >= 14 removeu o parâmetro 'extra_headers' do connect().
+O novo nome é 'additional_headers'. Além disso, o módulo 'websockets.legacy'
+foi removido na v14.
+
+FIXES:
+1. src/pocketoption/websocket_client.py
+   - Import de websockets.legacy.client com try/except para compatibilidade
+   - connect() agora detecta versão do websockets em runtime e usa
+     'additional_headers' (v14+) ou 'extra_headers' (v11-13)
+
+2. src/pocketoption/connection_keep_alive.py
+   - Import de websockets.legacy.client com try/except para compatibilidade
+   - Já usava 'additional_headers' — apenas o import foi corrigido
+
+Commit: "fix: websockets compat extra_headers -> additional_headers for v14+"
+Push: origin/main ✓
+
+=== STATUS DO DEPLOY ===
+- App sobe: OK
+- Banco conecta: OK (postgres.railway.internal)
+- Tabelas criadas: OK
+- Seed admin: OK
+- WebSocket PocketOption: FALHA (SSID não configurado para o admin)
+  → Normal — usuário precisa configurar SSID via app
+
+=== PRÓXIMO PASSO ===
+Usuário precisa configurar SSID no app para conectar ao PocketOption.
+O backend está funcional no Railway.

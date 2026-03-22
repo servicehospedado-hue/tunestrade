@@ -1,26 +1,7 @@
-2026-03-22 00:16:14 | INFO     | connection_manager   | ConnectionManager iniciado (max: 1000, payout_reconnect: 300s)
-2026-03-22 00:16:14 | INFO     | connection_manager   | [ConnectionManager] DataCollector configurado
-2026-03-22 00:16:16 | INFO     | connection_manager   | Usuário 94736c7d-e00e-4df7-826b-cfeb4699f225 conectado com sucesso
-2026-03-22 00:16:18 | INFO     | connection_manager   | Usuário monitoring_payout conectado com sucesso
-2026-03-22 00:16:20 | INFO     | connection_manager   | Usuário monitoring_actives conectado com sucesso
-2026-03-22 00:16:22 | DEBUG    | connection_manager   | Heartbeat cancelado para 94736c7d-e00e-4df7-826b-cfeb4699f225
-2026-03-22 00:16:22 | INFO     | connection_manager   | Usuário 94736c7d-e00e-4df7-826b-cfeb4699f225 desconectado (estado anterior: connected)
-2026-03-22 00:18:14 | WARNING  | connection_manager   | Timeout aguardando callbacks do evento payout_update
-2026-03-22 00:21:14 | INFO     | connection_manager   | [PAYOUT] Reconectando 1 conta(s) payout para atualizar cache (intervalo: 300s)
-2026-03-22 00:21:14 | INFO     | connection_manager   | Reconectando monitoring_payout (tentativa 1/5, delay: 5.3s)
-2026-03-22 00:21:20 | INFO     | connection_manager   | Usuário monitoring_payout desconectado (estado anterior: reconnecting)
-2026-03-22 00:21:22 | INFO     | connection_manager   | Usuário monitoring_payout conectado com sucesso
-2026-03-22 00:21:22 | INFO     | connection_manager   | Reconexão bem-sucedida para monitoring_payout
-2026-03-22 00:21:22 | INFO     | connection_manager   | [PAYOUT] monitoring_payout reconectado com sucesso - cache atualizado
-2026-03-22 00:26:22 | INFO     | connection_manager   | [PAYOUT] Reconectando 1 conta(s) payout para atualizar cache (intervalo: 300s)
-2026-03-22 00:26:22 | INFO     | connection_manager   | Reconectando monitoring_payout (tentativa 1/5, delay: 5.7s)
-2026-03-22 00:26:28 | INFO     | connection_manager   | Usuário monitoring_payout desconectado (estado anterior: reconnecting)
-2026-03-22 00:26:30 | INFO     | connection_manager   | Usuário monitoring_payout conectado com sucesso
-2026-03-22 00:26:30 | INFO     | connection_manager   | Reconexão bem-sucedida para monitoring_payout
-2026-03-22 00:26:30 | INFO     | connection_manager   | [PAYOUT] monitoring_payout reconectado com sucesso - cache atualizado
-2026-03-22 00:27:27 | DEBUG    | connection_manager   | Heartbeat cancelado para monitoring_payout
-2026-03-22 00:27:28 | INFO     | connection_manager   | Usuário monitoring_payout desconectado (estado anterior: connected)
-2026-03-22 00:27:28 | DEBUG    | connection_manager   | Heartbeat cancelado para monitoring_actives
-2026-03-22 00:27:28 | INFO     | connection_manager   | Usuário monitoring_actives desconectado (estado anterior: connected)
-2026-03-22 00:27:28 | DEBUG    | connection_manager   | Payout reconnect loop cancelado
-2026-03-22 00:27:28 | INFO     | connection_manager   | ConnectionManager parado
+2026-03-22 01:03:42 | INFO     | connection_manager   | ConnectionManager iniciado (max: 1000, payout_reconnect: 300s)
+2026-03-22 01:03:42 | INFO     | connection_manager   | [ConnectionManager] DataCollector configurado
+2026-03-22 01:03:44 | DEBUG    | connection_manager   | Payout reconnect loop cancelado
+2026-03-22 01:03:44 | INFO     | connection_manager   | Desconectando 1 conexões...
+2026-03-22 01:03:44 | INFO     | connection_manager   | Usuário monitoring_payout desconectado (estado anterior: connecting)
+2026-03-22 01:03:44 | INFO     | connection_manager   | 1/1 conexões fechadas com sucesso
+2026-03-22 01:03:44 | INFO     | connection_manager   | ConnectionManager parado

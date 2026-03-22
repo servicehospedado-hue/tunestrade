@@ -1,14 +1,3 @@
-2026-03-22 00:16:14 | INFO     | cache_manager        | CacheManager iniciado (max: 512 MB, TTL: 60s)
-2026-03-22 00:16:14 | INFO     | cache_manager        | [CACHE] Stats: 0 entradas, 0.00MB, hit_rate: 0%
-2026-03-22 00:17:14 | INFO     | cache_manager        | [CACHE] Stats: 0 entradas, 0.00MB, hit_rate: 0.0%
-2026-03-22 00:18:14 | INFO     | cache_manager        | [CACHE] Stats: 0 entradas, 0.00MB, hit_rate: 0.0%
-2026-03-22 00:19:14 | INFO     | cache_manager        | [CACHE] Stats: 0 entradas, 0.00MB, hit_rate: 0.0%
-2026-03-22 00:20:14 | INFO     | cache_manager        | [CACHE] Stats: 0 entradas, 0.00MB, hit_rate: 0.0%
-2026-03-22 00:21:14 | INFO     | cache_manager        | [CACHE] Stats: 0 entradas, 0.00MB, hit_rate: 0.0%
-2026-03-22 00:22:14 | INFO     | cache_manager        | [CACHE] Stats: 0 entradas, 0.00MB, hit_rate: 0.0%
-2026-03-22 00:23:14 | INFO     | cache_manager        | [CACHE] Stats: 0 entradas, 0.00MB, hit_rate: 0.0%
-2026-03-22 00:24:14 | INFO     | cache_manager        | [CACHE] Stats: 0 entradas, 0.00MB, hit_rate: 0.0%
-2026-03-22 00:25:14 | INFO     | cache_manager        | [CACHE] Stats: 0 entradas, 0.00MB, hit_rate: 0.0%
-2026-03-22 00:26:14 | INFO     | cache_manager        | [CACHE] Stats: 0 entradas, 0.00MB, hit_rate: 0.0%
-2026-03-22 00:27:15 | INFO     | cache_manager        | [CACHE] Stats: 0 entradas, 0.00MB, hit_rate: 0.0%
-2026-03-22 00:27:28 | INFO     | cache_manager        | CacheManager parado
+2026-03-22 01:03:42 | INFO     | cache_manager        | CacheManager iniciado (max: 512 MB, TTL: 60s)
+2026-03-22 01:03:42 | INFO     | cache_manager        | [CACHE] Stats: 0 entradas, 0.00MB, hit_rate: 0%
+2026-03-22 01:03:44 | INFO     | cache_manager        | CacheManager parado

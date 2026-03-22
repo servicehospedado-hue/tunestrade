@@ -1,0 +1,48 @@
+TASK: TASK 8 — Deploy Railway (continuação)
+STATUS: in-progress
+DATE: 2026-03-22 04:30:00
+
+=== PROBLEMA RESOLVIDO ===
+ModuleNotFoundError: No module named 'jwt'
+
+CAUSA: python-jose e PyJWT conflitam. python-jose instala um módulo 'jose',
+mas às vezes sobrescreve/conflita com o módulo 'jwt' do PyJWT.
+O código usa `import jwt` (PyJWT), então python-jose não é necessário.
+
+FIX: Removido `python-jose[cryptography]>=3.3.0` do requirements.txt.
+Commit: "fix: remove python-jose conflict, keep PyJWT only"
+Push: origin/main ✓
+
+=== PRÓXIMO PROBLEMA: DATABASE ===
+O app usa variáveis DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD
+(não DATABASE_URL diretamente — settings.py monta a URL a partir dessas vars).
+
+No Railway, o serviço backend precisa das seguintes variáveis de ambiente:
+
+  DB_HOST=postgres.railway.internal
+  DB_PORT=5432
+  DB_NAME=railway
+  DB_USER=postgres
+  DB_PASSWORD=FTMWidXEgVDTlqeigtupykrSSefOCOLp
+  DB_ENABLED=true
+
+ATENÇÃO: admin_sync_url usa psycopg2 (para criar o banco).
+No Railway o banco 'railway' já existe, então _ensure_database_exists vai
+tentar conectar via psycopg2 ao banco 'postgres' (admin_url).
+Isso pode falhar se psycopg2 não conseguir conectar ao admin.
+Mas como o banco já existe, o erro é não-crítico (apenas warning).
+
+=== VARIÁVEIS COMPLETAS PARA O SERVIÇO BACKEND NO RAILWAY ===
+DB_HOST=postgres.railway.internal
+DB_PORT=5432
+DB_NAME=railway
+DB_USER=postgres
+DB_PASSWORD=FTMWidXEgVDTlqeigtupykrSSefOCOLp
+DB_ENABLED=true
+JWT_SECRET=38f1fa43aabc47491616da76e1f0dc9f7dec41524283fa37b768a31911e6783c
+ENVIRONMENT=production
+API_HOST=0.0.0.0
+API_PORT=8000
+
+=== ARQUIVOS MODIFICADOS ===
+- requirements.txt (removido python-jose)

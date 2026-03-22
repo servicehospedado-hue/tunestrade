@@ -1,0 +1,47 @@
+TALK: 2026-03-22_05-00-00
+TIPO: LOG_FLOOD_FIX + ENV_RAILWAY
+STATUS: COMPLETED
+
+## TAREFA 8 (continuação) — Fix log flood Railway + ENV correta
+
+### Problema
+Railway estava dropando mensagens por rate limit de logs.
+App logava cada tick/stream como INFO, gerando centenas de logs/segundo.
+
+### Correções aplicadas
+
+**src/pocketoption/client.py**
+- `_ws_logger.info([BINARY_TICK])` → debug
+- `_ws_logger.info([TICK])` (2 ocorrências) → debug
+- `_ws_logger.info([BINARY_RAW])` → debug
+- `_ws_logger.info([RECV_BINARY])` → debug
+- `_ws_logger.info([RECV_BINARY_DATA])` → debug
+- `_ws_logger.info([RECV])` → debug
+- `_ws_logger.info([STREAM_UPDATE])` → debug
+
+**src/pocketoption/websocket_client.py**
+- `logger.info([PLACEHOLDER_BINARY])` → debug
+- `logger.info([RAW MSG] binary)` → debug
+- `logger.info([BINARY RECEIVED])` → debug
+- `logger.info([BINARY DATA])` → debug
+- `logger.info([BINARY HEX])` → debug
+- `logger.info([RAW MSG] else)` → debug
+- `logger.info([PLACEHOLDER] updateStream)` → debug
+- `logger.info([PLACEHOLDER] updateHistoryNewFast)` → debug
+- `logger.info([BINARY_TICK] Processing)` → debug
+- `logger.info([TICK_DATA])` → debug
+- `logger.info([TICK_RAW])` → debug
+- `logger.info([BINARY_HEX])` → debug
+
+### Commit
+`fix: rebaixar logs de tick/stream/binary para DEBUG — reduz flood no Railway`
+Push: main → Railway redeploy automático
+
+### ENV Railway (backend)
+Variáveis corretas fornecidas ao usuário:
+- DB_HOST=postgres.railway.internal (rede privada)
+- REDIS_HOST=redis.railway.internal (rede privada)
+- REDIS_ENABLED=true (ativado — serviço disponível)
+- LOG_LEVEL=warning (filtra ticks/debug automaticamente)
+- DEBUG=false
+- ENVIRONMENT=production
