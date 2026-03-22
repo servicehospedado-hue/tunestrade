@@ -376,23 +376,23 @@ class AsyncWebSocketClient:
                     
                     # Check if we're expecting binary data after a placeholder
                     if self._pending_placeholder and isinstance(message, bytes):
-                        logger.info(f"[PLACEHOLDER_BINARY] Received binary data for {self._placeholder_event_type}, Size={len(message)} bytes")
+                        logger.debug(f"[PLACEHOLDER_BINARY] Received binary data for {self._placeholder_event_type}, Size={len(message)} bytes")
                         # Process the binary data as tick data
                         await self._handle_placeholder_binary(message)
                         continue
                     
                     if isinstance(message, bytes):
-                        logger.info(f"[RAW MSG] Type={msg_type}, Size={len(message)} bytes")
-                        logger.info(f"[BINARY RECEIVED] {len(message)} bytes")
+                        logger.debug(f"[RAW MSG] Type={msg_type}, Size={len(message)} bytes")
+                        logger.debug(f"[BINARY RECEIVED] {len(message)} bytes")
                         try:
                             decoded = message.decode('utf-8', errors='ignore')
-                            logger.info(f"[BINARY DATA] {decoded[:200]}")
+                            logger.debug(f"[BINARY DATA] {decoded[:200]}")
                         except:
-                            logger.info(f"[BINARY HEX] {message[:50].hex()}...")
+                            logger.debug(f"[BINARY HEX] {message[:50].hex()}...")
                     elif isinstance(message, str):
                         logger.debug(f"[RAW MSG] Type={msg_type}, Content={message[:100]}...")
                     else:
-                        logger.info(f"[RAW MSG] Type={msg_type}, Content={str(message)[:100]}...")
+                        logger.debug(f"[RAW MSG] Type={msg_type}, Content={str(message)[:100]}...")
                     
                     await self._process_message(message)
 
@@ -736,7 +736,7 @@ class AsyncWebSocketClient:
         elif event_type == "updateStream":
             # Check if this is a placeholder for binary data
             if isinstance(event_data, dict) and event_data.get("_placeholder") == True:
-                logger.info(f"[PLACEHOLDER] updateStream placeholder detected, expecting binary frame...")
+                logger.debug(f"[PLACEHOLDER] updateStream placeholder detected, expecting binary frame...")
                 self._pending_placeholder = event_data
                 self._placeholder_event_type = "updateStream"
             else:
@@ -751,7 +751,7 @@ class AsyncWebSocketClient:
         elif event_type == "updateHistoryNewFast":
             # Check if this is a placeholder for binary data
             if isinstance(event_data, dict) and event_data.get("_placeholder") == True:
-                logger.info(f"[PLACEHOLDER] updateHistoryNewFast placeholder detected, expecting binary frame...")
+                logger.debug(f"[PLACEHOLDER] updateHistoryNewFast placeholder detected, expecting binary frame...")
                 self._pending_placeholder = event_data
                 self._placeholder_event_type = "updateHistoryNewFast"
             else:
@@ -787,13 +787,13 @@ class AsyncWebSocketClient:
             message: Binary data frame
         """
         try:
-            logger.info(f"[BINARY_TICK] Processing {len(message)} bytes for {self._placeholder_event_type}")
+            logger.debug(f"[BINARY_TICK] Processing {len(message)} bytes for {self._placeholder_event_type}")
             
             # Try to decode as UTF-8 JSON
             try:
                 decoded = message.decode('utf-8')
                 data = json.loads(decoded)
-                logger.info(f"[TICK_DATA] Decoded: {str(data)[:300]}")
+                logger.debug(f"[TICK_DATA] Decoded: {str(data)[:300]}")
                 
                 # Emit based on the placeholder event type
                 if self._placeholder_event_type == "updateHistoryNewFast":
@@ -811,12 +811,12 @@ class AsyncWebSocketClient:
                 try:
                     # Often tick data is a JSON array
                     decoded = message.decode('utf-8', errors='ignore')
-                    logger.info(f"[TICK_RAW] {decoded[:200]}")
+                    logger.debug(f"[TICK_RAW] {decoded[:200]}")
                 except:
                     pass
             except UnicodeDecodeError:
                 # Raw binary, log as hex
-                logger.info(f"[BINARY_HEX] {message[:100].hex()}...")
+                logger.debug(f"[BINARY_HEX] {message[:100].hex()}...")
             
         finally:
             # Clear placeholder state

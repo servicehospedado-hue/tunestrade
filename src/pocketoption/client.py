@@ -240,24 +240,24 @@ class AsyncPocketOptionClient:
                     msg_str = f"[TICK_DATA] {tick_data}"
                     # Log detailed tick info
                     if self._ws_logger:
-                        self._ws_logger.info(f"[BINARY_TICK] {decoded}")
+                        self._ws_logger.debug(f"[BINARY_TICK] {decoded}")
                         # If it's a tick array, extract values
                         if isinstance(tick_data, list) and len(tick_data) > 0:
                             for tick in tick_data[:3]:  # Log first 3 ticks
                                 if isinstance(tick, (list, tuple)) and len(tick) >= 2:
                                     asset = tick[0] if isinstance(tick[0], str) else "unknown"
                                     price = tick[1] if len(tick) > 1 else 0
-                                    self._ws_logger.info(f"[TICK] {asset}: {price}")
+                                    self._ws_logger.debug(f"[TICK] {asset}: {price}")
                 except:
                     msg_str = f"[BINARY_DATA] {decoded[:200]}"
                     if self._ws_logger:
-                        self._ws_logger.info(f"[BINARY_RAW] {decoded}")
+                        self._ws_logger.debug(f"[BINARY_RAW] {decoded}")
             except Exception as e:
                 msg_str = f"[BINARY] {msg_size} bytes: {message[:50].hex()}..."
             
             if self._ws_logger:
-                self._ws_logger.info(f"[RECV_BINARY] Mensagem Binária\t{msg_size} B")
-                self._ws_logger.info(f"[RECV_BINARY_DATA] {msg_str}")
+                self._ws_logger.debug(f"[RECV_BINARY] Mensagem Binária\t{msg_size} B")
+                self._ws_logger.debug(f"[RECV_BINARY_DATA] {msg_str}")
             if self._ws_connection_logger:
                 self._ws_connection_logger.log_recv(f"[BINARY] {msg_size} bytes")
             logger.debug(f"[WS RECV BINARY] {msg_size} bytes")
@@ -266,7 +266,7 @@ class AsyncPocketOptionClient:
         # Handle text messages
         msg_str = str(message)
         if self._ws_logger:
-            self._ws_logger.info(f"[RECV] {msg_str}")
+            self._ws_logger.debug(f"[RECV] {msg_str}")
         if self._ws_connection_logger:
             self._ws_connection_logger.log_recv(msg_str)
             self._ws_connection_logger.log_recv_raw(msg_str)
@@ -1493,7 +1493,7 @@ class AsyncPocketOptionClient:
         """Handle stream update event - includes real-time candle and tick data"""
         # Log all stream data received
         if self._ws_logger:
-            self._ws_logger.info(f"[STREAM_UPDATE] {json.dumps(data, default=str)}")
+            self._ws_logger.debug(f"[STREAM_UPDATE] {json.dumps(data, default=str)}")
         
         if self.enable_logging:
             logger.debug(f"📡 Stream update: {data}")
@@ -1511,7 +1511,7 @@ class AsyncPocketOptionClient:
                             if self._data_collector.is_monitoring(asset):
                                 await self._data_collector.append_tick(asset, float(price), float(timestamp))
                                 if self._ws_logger:
-                                    self._ws_logger.info(f"[TICK] {asset}: {price} @ {timestamp}")
+                                    self._ws_logger.debug(f"[TICK] {asset}: {price} @ {timestamp}")
                             else:
                                 logger.debug(f"[CLIENT] Tick ignorado (ativo não monitorado): {asset}={price}")
                         else:
@@ -1549,7 +1549,7 @@ class AsyncPocketOptionClient:
                     await self._data_collector.append_tick(asset, float(price), timestamp)
                     # Log tick data
                     if self._ws_logger:
-                        self._ws_logger.info(f"[TICK] {asset}: {price} @ {timestamp}")
+                        self._ws_logger.debug(f"[TICK] {asset}: {price} @ {timestamp}")
                     logger.debug(f"[STORAGE] Tick salvo para {asset}: {price}")
                 else:
                     logger.debug(f"[CLIENT] Tick ignorado (ativo não monitorado): {asset}={price}")
