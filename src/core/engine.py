@@ -65,6 +65,7 @@ class TradingEngine:
         
         # Loop de monitoramento
         self._monitoring_task: Optional[asyncio.Task] = None
+        self._anti_hibernate_task: Optional[asyncio.Task] = None
         self._running = False
         
     async def start(self):
@@ -256,6 +257,7 @@ class TradingEngine:
             # Iniciar monitoramento do sistema
             self._running = True
             self._monitoring_task = asyncio.create_task(self._monitor_system())
+            self._anti_hibernate_task = asyncio.create_task(self._anti_hibernate_loop())
             
             # Configurar integração entre componentes
             await self._setup_integration()
@@ -289,6 +291,13 @@ class TradingEngine:
                 pass
             except Exception as e:
                 logger.warning(f"Erro ao cancelar monitoring task: {e}")
+
+        if self._anti_hibernate_task:
+            self._anti_hibernate_task.cancel()
+            try:
+                await self._anti_hibernate_task
+            except asyncio.CancelledError:
+                pass
         
         # Parar autotrade
         if self.autotrade_manager:
@@ -415,6 +424,23 @@ class TradingEngine:
                 
             except Exception as e:
                 logger.error(f"Erro no monitoramento: {e}")
+
+    async def _anti_hibernate_loop(self):
+        """Self-ping a cada 10 minutos para evitar hibernação no Railway."""
+        import aiohttp
+        import os
+        await asyncio.sleep(60)  # aguardar sistema subir antes do primeiro ping
+        host = os.getenv("API_HOST", "0.0.0.0")
+        port = int(os.getenv("API_PORT", "8000"))
+        url = f"http://127.0.0.1:{port}/system/ping"
+        while self._running:
+            try:
+                async with aiohttp.ClientSession() as session:
+                    async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as resp:
+                        logger.debug(f"[ANTI-HIBERNATE] self-ping {resp.status}")
+            except Exception as e:
+                logger.debug(f"[ANTI-HIBERNATE] ping falhou: {e}")
+            await asyncio.sleep(600)  # 10 minutos
                 
     async def get_user_signals(self, user_id: str, status: Optional[str] = None) -> List:
         """Obtém sinais de um usuário"""
