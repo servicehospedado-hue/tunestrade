@@ -26,15 +26,22 @@ logger = get_manager_logger("redis_cache")
 class RedisCache:
     """Cache Redis para dados de payout e ativos"""
     
-    def __init__(self, host: str = "redis", port: int = 6379, db: int = 0):
+    def __init__(self, host: str = "redis", port: int = 6379, db: int = 0, password: str = None):
         self.host = host
         self.port = port
         self.db = db
+        self.password = password
         self._redis: Optional[Any] = None
         self._lock = asyncio.Lock()
+        # Backoff para evitar flood de reconexão
+        self._last_connect_attempt: float = 0.0
+        self._connect_backoff: float = 5.0   # segundos iniciais
+        self._connect_backoff_max: float = 60.0  # máximo 60s entre tentativas
+        self._connect_failed: bool = False
         
     async def connect(self):
         """Conecta ao Redis com fallback para localhost"""
+        import time
         logger.info("[REDIS] Conectando...")
         if not REDIS_AVAILABLE or Redis is None:
             logger.warning("[REDIS] aioredis não instalado - cache desativado")
@@ -42,14 +49,17 @@ class RedisCache:
         
         # Tentar hosts: primeiro o configurado, depois localhost como fallback
         hosts_to_try = [self.host]
-        if self.host != "localhost" and self.host != "127.0.0.1":
+        if self.host not in ("localhost", "127.0.0.1"):
             hosts_to_try.extend(["localhost", "127.0.0.1"])
         
         last_error = None
         for host in hosts_to_try:
             try:
+                url = f"redis://{host}:{self.port}/{self.db}"
+                if self.password:
+                    url = f"redis://:{self.password}@{host}:{self.port}/{self.db}"
                 self._redis = Redis.from_url(
-                    f"redis://{host}:{self.port}/{self.db}",
+                    url,
                     encoding="utf-8",
                     decode_responses=True,
                     socket_connect_timeout=5,
@@ -61,6 +71,8 @@ class RedisCache:
                     logger.info(f"[REDIS] Conectado via fallback: {host}:{self.port}/{self.db}")
                 else:
                     logger.info(f"[REDIS] Conectado: {host}:{self.port}/{self.db}")
+                self._connect_failed = False
+                self._connect_backoff = 5.0
                 return True
             except Exception as e:
                 last_error = e
@@ -69,6 +81,8 @@ class RedisCache:
                 continue
         
         logger.error(f"[REDIS] Erro ao conectar em todos os hosts: {last_error}")
+        self._connect_failed = True
+        self._last_connect_attempt = time.monotonic()
         return False
     
     async def disconnect(self):
@@ -79,17 +93,24 @@ class RedisCache:
             logger.info("[REDIS] Desconectado")
     
     async def _ensure_connection(self) -> bool:
-        """Verifica e reconecta ao Redis se necessário"""
+        """Verifica e reconecta ao Redis se necessário, com backoff exponencial"""
+        import time
         if not self._redis:
+            # Se falhou recentemente, aguardar backoff antes de tentar de novo
+            if self._connect_failed:
+                elapsed = time.monotonic() - self._last_connect_attempt
+                if elapsed < self._connect_backoff:
+                    return False
+                # Aumentar backoff exponencialmente até o máximo
+                self._connect_backoff = min(self._connect_backoff * 2, self._connect_backoff_max)
             return await self.connect()
         
         try:
-            # Testa se a conexão ainda está ativa
             await self._redis.ping()
             return True
         except Exception:
-            # Conexão perdida, tenta reconectar
             logger.warning("[REDIS] Conexão perdida, tentando reconectar...")
+            self._redis = None
             return await self.connect()
     
     async def set(self, key: str, value: Any, ttl: int = 3600):
@@ -191,10 +212,10 @@ class RedisCache:
 redis_cache = RedisCache()
 
 
-async def init_redis_cache(host: str = "redis", port: int = 6379) -> bool:
+async def init_redis_cache(host: str = "redis", port: int = 6379, password: str = None) -> bool:
     """Inicializa o cache Redis global"""
     global redis_cache
-    redis_cache = RedisCache(host=host, port=port)
+    redis_cache = RedisCache(host=host, port=port, password=password)
     return await redis_cache.connect()
 
 

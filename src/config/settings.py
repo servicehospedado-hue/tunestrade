@@ -47,6 +47,7 @@ class RedisConfig:
     port: int = 6379
     db: int = 0
     password: Optional[str] = None
+    enabled: bool = False
 
 
 @dataclass
@@ -171,6 +172,8 @@ class Settings:
         # Redis
         settings.redis.host = os.getenv("REDIS_HOST", "localhost")
         settings.redis.port = int(os.getenv("REDIS_PORT", "6379"))
+        settings.redis.enabled = os.getenv("REDIS_ENABLED", "false").lower() == "true"
+        settings.redis.password = os.getenv("REDIS_PASSWORD", "") or None
 
         # API
         settings.api.host = os.getenv("API_HOST", "0.0.0.0")

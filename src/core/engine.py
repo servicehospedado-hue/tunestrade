@@ -90,11 +90,18 @@ class TradingEngine:
             # Inicializar Redis cache para payouts
             redis_host = self.settings.redis.host
             redis_port = self.settings.redis.port
-            redis_initialized = await init_redis_cache(host=redis_host, port=redis_port)
-            if redis_initialized:
-                logger.info("[OK] Redis cache conectado para payouts")
+            if self.settings.redis.enabled:
+                redis_initialized = await init_redis_cache(
+                    host=redis_host,
+                    port=redis_port,
+                    password=self.settings.redis.password,
+                )
+                if redis_initialized:
+                    logger.info("[OK] Redis cache conectado para payouts")
+                else:
+                    logger.warning("[WARN] Redis cache não disponível - payouts só em memória")
             else:
-                logger.warning("[WARN] Redis cache não disponível - payouts só em memória")
+                logger.info("[INFO] Redis desativado (REDIS_ENABLED=false) - payouts só em memória")
             
             # Inicializar componentes
             self.cache_manager = CacheManager(

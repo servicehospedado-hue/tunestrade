@@ -186,7 +186,7 @@ class StrategyManager:
                 results = []
                 start_time = datetime.now()
                     
-                # Executar estratégias para cada asset
+                # Executar estratégias para cada asset (sem emitir ainda)
                 for asset in monitored_assets:
                     try:
                         result = await self._execute_for_asset(asset)
@@ -199,12 +199,13 @@ class StrategyManager:
                 if execution_count % 10 == 0:
                     logger.info(f"[STRATEGY] Loop executado em {elapsed_ms:.0f}ms | {len(results)} resultados")
                 
-                # Log resumo se houver sinais
+                # Emitir apenas o sinal de maior confiança do ciclo inteiro
                 if results:
                     signals = [r for r in results if r.direction != "NEUTRAL"]
                     if signals:
                         best = max(signals, key=lambda x: x.confidence)
-                        logger.info(f"[STRATEGY SUMMARY] {len(signals)} sinais | Melhor: {best.asset} {best.direction} ({best.confidence:.2f})")
+                        logger.info(f"[STRATEGY SUMMARY] {len(signals)} sinais | Emitindo melhor: {best.asset} {best.direction} ({best.confidence:.2f})")
+                        await self._emit_signal_auto(best.asset, best)
                     
             except asyncio.CancelledError:
                 break
@@ -255,8 +256,8 @@ class StrategyManager:
         
         # Se não há configs em memória, buscar usuários ativos no banco
         if not self._configs:
-            await self._execute_for_active_users(asset, df)
-            return None
+            result = await self._execute_for_active_users(asset, df)
+            return result
         
         # Executar estratégias configuradas
         for user_id, configs in self._configs.items():
@@ -273,10 +274,6 @@ class StrategyManager:
                     result = strategy.analyze(df)
                     result.asset = asset
                     
-                    # Verificar se deve emitir sinal
-                    if result.direction != "NEUTRAL" and result.confidence >= config.min_confidence:
-                        await self._emit_signal(config, result)
-                    
                     return result
                         
                 except Exception as e:
@@ -286,7 +283,7 @@ class StrategyManager:
                     
     async def _execute_for_active_users(self, asset: str, df) -> None:
         """Busca usuários com autotrade ativo no banco e executa a estratégia de cada um.
-        Emite apenas o sinal de maior confiança por ciclo (sem filtro mínimo)."""
+        Retorna o resultado de maior confiança (sem emitir — o loop decide)."""
         try:
             from ..database.autotrade_dao import autotrade_dao
             active_configs = await autotrade_dao.list_active_configs()
@@ -297,10 +294,7 @@ class StrategyManager:
         if not active_configs:
             # Nenhum usuário ativo — executar Scalping5s como fallback de sistema
             result = await self._run_strategy_for_asset('Scalping5s', asset, df, user_id='system')
-            if result and result.direction != "NEUTRAL":
-                logger.info(f"[STRATEGY] Sinal FORTE: {asset} | Scalping5s | {result.direction} | Conf: {result.confidence:.2f}")
-                await self._emit_signal_auto(asset, result)
-            return
+            return result  # retorna para o loop decidir
 
         # Coletar todos os resultados não-NEUTRAL de todos os usuários ativos
         candidates: list = []
@@ -308,7 +302,6 @@ class StrategyManager:
             strategy_name = config.strategy_name or 'Scalping5s'
             user_id = str(config.user_id)
 
-            # Verificar se o usuário tem estratégia pessoal ativa
             user_strategy_instance = await self._get_user_custom_strategy(user_id, strategy_name)
 
             result = await self._run_strategy_for_asset(
@@ -319,12 +312,11 @@ class StrategyManager:
                 candidates.append(result)
 
         if not candidates:
-            return
+            return None
 
-        # Emitir apenas o sinal de maior confiança
+        # Retornar o de maior confiança (o loop emite)
         best = max(candidates, key=lambda r: r.confidence)
-        logger.info(f"[STRATEGY] Sinal FORTE: {asset} | {best.direction} | Conf: {best.confidence:.2f}")
-        await self._emit_signal_auto(asset, best)
+        return best
 
     async def _get_user_custom_strategy(self, user_id: str, base_strategy_name: str):
         """
