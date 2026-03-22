@@ -1,0 +1,303 @@
+2026-03-22 00:16:14 | INFO     | engine               | Iniciando TradingEngine...
+2026-03-22 00:16:14 | INFO     | engine               | [OK] DatabaseManager inicializado
+2026-03-22 00:16:14 | INFO     | engine               | [OK] AutotradeDAO inicializado - Admin vinculado à estratégia Scalping5s
+2026-03-22 00:16:14 | INFO     | engine               | [OK] Redis cache conectado para payouts
+2026-03-22 00:16:14 | INFO     | engine               | [OK] CacheManager iniciado
+2026-03-22 00:16:14 | INFO     | engine               | [OK] ConnectionManager iniciado
+2026-03-22 00:16:14 | INFO     | engine               | [OK] DataCollectorManager iniciado
+2026-03-22 00:16:14 | INFO     | engine               | [OK] UserManager iniciado com banco de dados
+2026-03-22 00:16:14 | INFO     | engine               | [OK] SignalManager iniciado
+2026-03-22 00:16:14 | INFO     | engine               | [OK] IndicatorManager iniciado
+2026-03-22 00:16:14 | INFO     | engine               | [OK] NotificationManager iniciado
+2026-03-22 00:16:14 | INFO     | engine               | [OK] StrategyManager iniciado
+2026-03-22 00:16:14 | INFO     | engine               | [OK] TradeExecutor iniciado
+2026-03-22 00:16:14 | INFO     | engine               | [AUTOTRADE] Ativado para 94736c7d-e00e-4df7-826b-cfeb4699f225, conectando...
+2026-03-22 00:16:14 | INFO     | engine               | [OK] AutotradeManager iniciado
+2026-03-22 00:16:14 | INFO     | engine               | [Engine] Callback payout_update registrado no ConnectionManager
+2026-03-22 00:16:14 | INFO     | engine               | [OK] SystemHealthManager iniciado
+2026-03-22 00:16:14 | INFO     | engine               | Integração entre componentes configurada
+2026-03-22 00:16:14 | INFO     | engine               | [OK] TradingEngine iniciado com sucesso!
+2026-03-22 00:16:14 | INFO     | engine               | [OK] API disponível - Contas de monitoramento conectando em paralelo...
+2026-03-22 00:16:16 | INFO     | engine               | [Engine] payout_update recebido: 183 ativos
+2026-03-22 00:16:16 | INFO     | engine               | [Engine] Chamando update_all_assets com 183 ativos
+2026-03-22 00:16:16 | INFO     | engine               | [Engine] update_all_assets concluído
+2026-03-22 00:16:18 | INFO     | engine               | [Engine] payout_update recebido: 183 ativos
+2026-03-22 00:16:18 | INFO     | engine               | [Engine] Chamando update_all_assets com 183 ativos
+2026-03-22 00:16:18 | INFO     | engine               | [Engine] update_all_assets concluído
+2026-03-22 00:16:20 | INFO     | engine               | [Engine] payout_update recebido: 183 ativos
+2026-03-22 00:16:20 | INFO     | engine               | [Engine] Chamando update_all_assets com 183 ativos
+2026-03-22 00:16:20 | INFO     | engine               | [Engine] update_all_assets concluído
+2026-03-22 00:16:22 | INFO     | engine               | [SIGNAL] Recebido: #AAPL_otc | CALL | conf: 0.50
+2026-03-22 00:16:22 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:16:22 | INFO     | engine               | [SIGNAL] Executando: #AAPL_otc | CALL | conf: 0.50
+2026-03-22 00:16:22 | INFO     | engine               | [SIGNAL] Usuário ativo: 94736c7d-e00e-4df7-826b-cfeb4699f225 | strategy: Scalping5s
+2026-03-22 00:16:22 | DEBUG    | engine               | [SIGNAL] TradeExecutor retornou sem resultados (cooldown ativo ou confiança baixa)
+2026-03-22 00:16:32 | INFO     | engine               | [SIGNAL] Recebido: #PFE_otc | PUT | conf: 0.53
+2026-03-22 00:16:32 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:16:32 | INFO     | engine               | [SIGNAL] Executando: #PFE_otc | PUT | conf: 0.53
+2026-03-22 00:16:32 | INFO     | engine               | [SIGNAL] Usuário ativo: 94736c7d-e00e-4df7-826b-cfeb4699f225 | strategy: Scalping5s
+2026-03-22 00:16:32 | DEBUG    | engine               | [SIGNAL] TradeExecutor retornou sem resultados (cooldown ativo ou confiança baixa)
+2026-03-22 00:16:38 | INFO     | engine               | [SIGNAL] Recebido: AUDNZD_otc | CALL | conf: 0.53
+2026-03-22 00:16:38 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:16:38 | INFO     | engine               | [SIGNAL] Executando: AUDNZD_otc | CALL | conf: 0.53
+2026-03-22 00:16:38 | INFO     | engine               | [SIGNAL] Usuário ativo: 94736c7d-e00e-4df7-826b-cfeb4699f225 | strategy: Scalping5s
+2026-03-22 00:16:38 | DEBUG    | engine               | [SIGNAL] TradeExecutor retornou sem resultados (cooldown ativo ou confiança baixa)
+2026-03-22 00:16:54 | INFO     | engine               | [SIGNAL] Recebido: #AAPL_otc | CALL | conf: 0.53
+2026-03-22 00:16:54 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:16:54 | INFO     | engine               | [SIGNAL] Executando: #AAPL_otc | CALL | conf: 0.53
+2026-03-22 00:16:54 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:16:59 | INFO     | engine               | [SIGNAL] Recebido: AEDCNY_otc | PUT | conf: 0.62
+2026-03-22 00:16:59 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:16:59 | INFO     | engine               | [SIGNAL] Executando: AEDCNY_otc | PUT | conf: 0.62
+2026-03-22 00:16:59 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:17:04 | INFO     | engine               | [SIGNAL] Recebido: #AAPL_otc | PUT | conf: 0.50
+2026-03-22 00:17:04 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:17:04 | INFO     | engine               | [SIGNAL] Executando: #AAPL_otc | PUT | conf: 0.50
+2026-03-22 00:17:04 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:17:14 | INFO     | engine               | Status: 1 usuários, 0 tarefas, 6 sinais, cache: 0.0%
+2026-03-22 00:17:16 | INFO     | engine               | [SIGNAL] Recebido: AUDNZD_otc | PUT | conf: 0.53
+2026-03-22 00:17:16 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:17:16 | INFO     | engine               | [SIGNAL] Executando: AUDNZD_otc | PUT | conf: 0.53
+2026-03-22 00:17:16 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:17:26 | INFO     | engine               | [SIGNAL] Recebido: AEDCNY_otc | CALL | conf: 0.53
+2026-03-22 00:17:26 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:17:26 | INFO     | engine               | [SIGNAL] Executando: AEDCNY_otc | CALL | conf: 0.53
+2026-03-22 00:17:26 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:17:31 | INFO     | engine               | [SIGNAL] Recebido: #FB_otc | PUT | conf: 0.62
+2026-03-22 00:17:31 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:17:31 | INFO     | engine               | [SIGNAL] Executando: #FB_otc | PUT | conf: 0.62
+2026-03-22 00:17:31 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:17:53 | INFO     | engine               | [SIGNAL] Recebido: AEDCNY_otc | CALL | conf: 0.53
+2026-03-22 00:17:53 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:17:53 | INFO     | engine               | [SIGNAL] Executando: AEDCNY_otc | CALL | conf: 0.53
+2026-03-22 00:17:53 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:17:58 | INFO     | engine               | [SIGNAL] Recebido: AUDCHF_otc | PUT | conf: 0.50
+2026-03-22 00:17:58 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:17:58 | INFO     | engine               | [SIGNAL] Executando: AUDCHF_otc | PUT | conf: 0.50
+2026-03-22 00:17:58 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:18:09 | INFO     | engine               | [Engine] payout_update recebido: 183 ativos
+2026-03-22 00:18:09 | INFO     | engine               | [Engine] Chamando update_all_assets com 183 ativos
+2026-03-22 00:18:09 | INFO     | engine               | [Engine] payout_update recebido: 183 ativos
+2026-03-22 00:18:09 | INFO     | engine               | [Engine] Chamando update_all_assets com 183 ativos
+2026-03-22 00:18:09 | INFO     | engine               | [Engine] update_all_assets concluído
+2026-03-22 00:18:14 | INFO     | engine               | [SIGNAL] Recebido: #AAPL_otc | PUT | conf: 0.53
+2026-03-22 00:18:14 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:18:14 | INFO     | engine               | [SIGNAL] Executando: #AAPL_otc | PUT | conf: 0.53
+2026-03-22 00:18:14 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:18:14 | INFO     | engine               | Status: 1 usuários, 0 tarefas, 12 sinais, cache: 0.0%
+2026-03-22 00:18:25 | INFO     | engine               | [SIGNAL] Recebido: AUDNZD_otc | CALL | conf: 0.53
+2026-03-22 00:18:25 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:18:25 | INFO     | engine               | [SIGNAL] Executando: AUDNZD_otc | CALL | conf: 0.53
+2026-03-22 00:18:25 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:18:36 | INFO     | engine               | [SIGNAL] Recebido: AEDCNY_otc | PUT | conf: 0.50
+2026-03-22 00:18:36 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:18:36 | INFO     | engine               | [SIGNAL] Executando: AEDCNY_otc | PUT | conf: 0.50
+2026-03-22 00:18:36 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:19:13 | INFO     | engine               | [SIGNAL] Recebido: #JNJ_otc | PUT | conf: 0.53
+2026-03-22 00:19:13 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:19:13 | INFO     | engine               | [SIGNAL] Executando: #JNJ_otc | PUT | conf: 0.53
+2026-03-22 00:19:13 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:19:14 | INFO     | engine               | Status: 1 usuários, 0 tarefas, 15 sinais, cache: 0.0%
+2026-03-22 00:19:23 | INFO     | engine               | [SIGNAL] Recebido: #JNJ_otc | PUT | conf: 0.62
+2026-03-22 00:19:23 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:19:23 | INFO     | engine               | [SIGNAL] Executando: #JNJ_otc | PUT | conf: 0.62
+2026-03-22 00:19:23 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:19:39 | INFO     | engine               | [SIGNAL] Recebido: #AAPL_otc | CALL | conf: 0.53
+2026-03-22 00:19:39 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:19:39 | INFO     | engine               | [SIGNAL] Executando: #AAPL_otc | CALL | conf: 0.53
+2026-03-22 00:19:39 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:19:50 | INFO     | engine               | [SIGNAL] Recebido: AEDCNY_otc | CALL | conf: 0.53
+2026-03-22 00:19:50 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:19:50 | INFO     | engine               | [SIGNAL] Executando: AEDCNY_otc | CALL | conf: 0.53
+2026-03-22 00:19:50 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:20:01 | INFO     | engine               | [SIGNAL] Recebido: #AAPL_otc | PUT | conf: 0.53
+2026-03-22 00:20:01 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:20:01 | INFO     | engine               | [SIGNAL] Executando: #AAPL_otc | PUT | conf: 0.53
+2026-03-22 00:20:01 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:20:01 | INFO     | engine               | [SIGNAL] Recebido: #PFE_otc | PUT | conf: 0.53
+2026-03-22 00:20:01 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:20:01 | INFO     | engine               | [SIGNAL] Executando: #PFE_otc | PUT | conf: 0.53
+2026-03-22 00:20:01 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:20:01 | INFO     | engine               | [SIGNAL] Recebido: AUDCHF_otc | CALL | conf: 0.53
+2026-03-22 00:20:01 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:20:01 | INFO     | engine               | [SIGNAL] Executando: AUDCHF_otc | CALL | conf: 0.53
+2026-03-22 00:20:01 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:20:06 | INFO     | engine               | [SIGNAL] Recebido: AEDCNY_otc | PUT | conf: 0.62
+2026-03-22 00:20:06 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:20:06 | INFO     | engine               | [SIGNAL] Executando: AEDCNY_otc | PUT | conf: 0.62
+2026-03-22 00:20:06 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:20:06 | INFO     | engine               | [SIGNAL] Recebido: AUDCAD_otc | PUT | conf: 0.62
+2026-03-22 00:20:06 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:20:06 | INFO     | engine               | [SIGNAL] Executando: AUDCAD_otc | PUT | conf: 0.62
+2026-03-22 00:20:06 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:20:06 | INFO     | engine               | [SIGNAL] Recebido: AUDNZD_otc | PUT | conf: 0.53
+2026-03-22 00:20:06 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:20:06 | INFO     | engine               | [SIGNAL] Executando: AUDNZD_otc | PUT | conf: 0.53
+2026-03-22 00:20:06 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:20:09 | INFO     | engine               | [Engine] payout_update recebido: 183 ativos
+2026-03-22 00:20:09 | INFO     | engine               | [Engine] Chamando update_all_assets com 183 ativos
+2026-03-22 00:20:09 | INFO     | engine               | [Engine] payout_update recebido: 183 ativos
+2026-03-22 00:20:09 | INFO     | engine               | [Engine] Chamando update_all_assets com 183 ativos
+2026-03-22 00:20:09 | INFO     | engine               | [Engine] update_all_assets concluído
+2026-03-22 00:20:10 | INFO     | engine               | [Engine] update_all_assets concluído
+2026-03-22 00:20:14 | INFO     | engine               | Status: 1 usuários, 0 tarefas, 24 sinais, cache: 0.0%
+2026-03-22 00:20:32 | INFO     | engine               | [SIGNAL] Recebido: #INTC_otc | PUT | conf: 0.62
+2026-03-22 00:20:32 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:20:32 | INFO     | engine               | [SIGNAL] Executando: #INTC_otc | PUT | conf: 0.62
+2026-03-22 00:20:32 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:20:59 | INFO     | engine               | [SIGNAL] Recebido: #AAPL_otc | CALL | conf: 0.53
+2026-03-22 00:20:59 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:20:59 | INFO     | engine               | [SIGNAL] Executando: #AAPL_otc | CALL | conf: 0.53
+2026-03-22 00:20:59 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:21:10 | INFO     | engine               | [SIGNAL] Recebido: #PFE_otc | PUT | conf: 0.62
+2026-03-22 00:21:10 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:21:10 | INFO     | engine               | [SIGNAL] Executando: #PFE_otc | PUT | conf: 0.62
+2026-03-22 00:21:10 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:21:10 | INFO     | engine               | [SIGNAL] Recebido: AUDCHF_otc | PUT | conf: 0.50
+2026-03-22 00:21:10 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:21:10 | INFO     | engine               | [SIGNAL] Executando: AUDCHF_otc | PUT | conf: 0.50
+2026-03-22 00:21:10 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:21:10 | INFO     | engine               | [Engine] payout_update recebido: 183 ativos
+2026-03-22 00:21:10 | INFO     | engine               | [Engine] Chamando update_all_assets com 183 ativos
+2026-03-22 00:21:10 | INFO     | engine               | [Engine] payout_update recebido: 183 ativos
+2026-03-22 00:21:10 | INFO     | engine               | [Engine] Chamando update_all_assets com 183 ativos
+2026-03-22 00:21:10 | INFO     | engine               | [Engine] update_all_assets concluído
+2026-03-22 00:21:11 | INFO     | engine               | [Engine] update_all_assets concluído
+2026-03-22 00:21:14 | INFO     | engine               | Status: 1 usuários, 0 tarefas, 28 sinais, cache: 0.0%
+2026-03-22 00:21:22 | INFO     | engine               | [Engine] payout_update recebido: 183 ativos
+2026-03-22 00:21:22 | INFO     | engine               | [Engine] Chamando update_all_assets com 183 ativos
+2026-03-22 00:21:22 | INFO     | engine               | [Engine] update_all_assets concluído
+2026-03-22 00:21:25 | INFO     | engine               | [SIGNAL] Recebido: AEDCNY_otc | CALL | conf: 0.53
+2026-03-22 00:21:25 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:21:25 | INFO     | engine               | [SIGNAL] Executando: AEDCNY_otc | CALL | conf: 0.53
+2026-03-22 00:21:25 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:21:40 | INFO     | engine               | [SIGNAL] Recebido: #FB_otc | PUT | conf: 0.62
+2026-03-22 00:21:40 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:21:40 | INFO     | engine               | [SIGNAL] Executando: #FB_otc | PUT | conf: 0.62
+2026-03-22 00:21:40 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:22:02 | INFO     | engine               | [SIGNAL] Recebido: #AAPL_otc | PUT | conf: 0.53
+2026-03-22 00:22:02 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:22:02 | INFO     | engine               | [SIGNAL] Executando: #AAPL_otc | PUT | conf: 0.53
+2026-03-22 00:22:02 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:22:14 | INFO     | engine               | Status: 1 usuários, 0 tarefas, 31 sinais, cache: 0.0%
+2026-03-22 00:22:18 | INFO     | engine               | [SIGNAL] Recebido: AUDCAD_otc | PUT | conf: 0.62
+2026-03-22 00:22:18 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:22:18 | INFO     | engine               | [SIGNAL] Executando: AUDCAD_otc | PUT | conf: 0.62
+2026-03-22 00:22:18 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:22:34 | INFO     | engine               | [SIGNAL] Recebido: AEDCNY_otc | CALL | conf: 0.53
+2026-03-22 00:22:34 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:22:34 | INFO     | engine               | [SIGNAL] Executando: AEDCNY_otc | CALL | conf: 0.53
+2026-03-22 00:22:34 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:22:49 | INFO     | engine               | [SIGNAL] Recebido: #FB_otc | CALL | conf: 0.53
+2026-03-22 00:22:49 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:22:49 | INFO     | engine               | [SIGNAL] Executando: #FB_otc | CALL | conf: 0.53
+2026-03-22 00:22:49 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:22:50 | INFO     | engine               | [SIGNAL] Recebido: AUDCHF_otc | PUT | conf: 0.62
+2026-03-22 00:22:50 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:22:50 | INFO     | engine               | [SIGNAL] Executando: AUDCHF_otc | PUT | conf: 0.62
+2026-03-22 00:22:50 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:23:11 | INFO     | engine               | [SIGNAL] Recebido: #JNJ_otc | CALL | conf: 0.53
+2026-03-22 00:23:11 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:23:11 | INFO     | engine               | [SIGNAL] Executando: #JNJ_otc | CALL | conf: 0.53
+2026-03-22 00:23:11 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:23:14 | INFO     | engine               | Status: 1 usuários, 0 tarefas, 36 sinais, cache: 0.0%
+2026-03-22 00:23:23 | INFO     | engine               | [SIGNAL] Recebido: #AXP_otc | PUT | conf: 0.62
+2026-03-22 00:23:23 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:23:23 | INFO     | engine               | [SIGNAL] Executando: #AXP_otc | PUT | conf: 0.62
+2026-03-22 00:23:23 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:23:27 | INFO     | engine               | [SIGNAL] Recebido: #JNJ_otc | CALL | conf: 0.53
+2026-03-22 00:23:27 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:23:27 | INFO     | engine               | [SIGNAL] Executando: #JNJ_otc | CALL | conf: 0.53
+2026-03-22 00:23:27 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:23:31 | INFO     | engine               | [SIGNAL] Recebido: #FB_otc | PUT | conf: 0.50
+2026-03-22 00:23:31 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:23:31 | INFO     | engine               | [SIGNAL] Executando: #FB_otc | PUT | conf: 0.50
+2026-03-22 00:23:31 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:23:42 | INFO     | engine               | [SIGNAL] Recebido: #FB_otc | PUT | conf: 0.53
+2026-03-22 00:23:42 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:23:42 | INFO     | engine               | [SIGNAL] Executando: #FB_otc | PUT | conf: 0.53
+2026-03-22 00:23:42 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:23:44 | INFO     | engine               | [SIGNAL] Recebido: #AXP_otc | PUT | conf: 0.53
+2026-03-22 00:23:44 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:23:44 | INFO     | engine               | [SIGNAL] Executando: #AXP_otc | PUT | conf: 0.53
+2026-03-22 00:23:44 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:23:48 | INFO     | engine               | [SIGNAL] Recebido: AEDCNY_otc | CALL | conf: 0.53
+2026-03-22 00:23:48 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:23:48 | INFO     | engine               | [SIGNAL] Executando: AEDCNY_otc | CALL | conf: 0.53
+2026-03-22 00:23:48 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:24:09 | INFO     | engine               | [Engine] payout_update recebido: 183 ativos
+2026-03-22 00:24:09 | INFO     | engine               | [Engine] Chamando update_all_assets com 183 ativos
+2026-03-22 00:24:09 | INFO     | engine               | [Engine] payout_update recebido: 183 ativos
+2026-03-22 00:24:09 | INFO     | engine               | [Engine] Chamando update_all_assets com 183 ativos
+2026-03-22 00:24:09 | INFO     | engine               | [Engine] update_all_assets concluído
+2026-03-22 00:24:10 | INFO     | engine               | [Engine] update_all_assets concluído
+2026-03-22 00:24:14 | INFO     | engine               | Status: 1 usuários, 0 tarefas, 42 sinais, cache: 0.0%
+2026-03-22 00:24:41 | INFO     | engine               | [SIGNAL] Recebido: #PFE_otc | CALL | conf: 0.53
+2026-03-22 00:24:41 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:24:41 | INFO     | engine               | [SIGNAL] Executando: #PFE_otc | CALL | conf: 0.53
+2026-03-22 00:24:41 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:24:52 | INFO     | engine               | [SIGNAL] Recebido: #JNJ_otc | CALL | conf: 0.50
+2026-03-22 00:24:52 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:24:52 | INFO     | engine               | [SIGNAL] Executando: #JNJ_otc | CALL | conf: 0.50
+2026-03-22 00:24:52 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:24:52 | INFO     | engine               | [SIGNAL] Recebido: AUDCAD_otc | PUT | conf: 0.62
+2026-03-22 00:24:52 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:24:52 | INFO     | engine               | [SIGNAL] Executando: AUDCAD_otc | PUT | conf: 0.62
+2026-03-22 00:24:52 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:25:10 | INFO     | engine               | [Engine] payout_update recebido: 183 ativos
+2026-03-22 00:25:10 | INFO     | engine               | [Engine] Chamando update_all_assets com 183 ativos
+2026-03-22 00:25:10 | INFO     | engine               | [Engine] payout_update recebido: 183 ativos
+2026-03-22 00:25:10 | INFO     | engine               | [Engine] Chamando update_all_assets com 183 ativos
+2026-03-22 00:25:10 | INFO     | engine               | [Engine] update_all_assets concluído
+2026-03-22 00:25:11 | INFO     | engine               | [Engine] update_all_assets concluído
+2026-03-22 00:25:13 | INFO     | engine               | [SIGNAL] Recebido: AUDCAD_otc | PUT | conf: 0.50
+2026-03-22 00:25:13 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:25:13 | INFO     | engine               | [SIGNAL] Executando: AUDCAD_otc | PUT | conf: 0.50
+2026-03-22 00:25:13 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:25:14 | INFO     | engine               | Status: 1 usuários, 0 tarefas, 46 sinais, cache: 0.0%
+2026-03-22 00:25:29 | INFO     | engine               | [SIGNAL] Recebido: AEDCNY_otc | CALL | conf: 0.53
+2026-03-22 00:25:29 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:25:29 | INFO     | engine               | [SIGNAL] Executando: AEDCNY_otc | CALL | conf: 0.53
+2026-03-22 00:25:29 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:25:34 | INFO     | engine               | [SIGNAL] Recebido: AUDCAD_otc | CALL | conf: 0.53
+2026-03-22 00:25:34 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:25:34 | INFO     | engine               | [SIGNAL] Executando: AUDCAD_otc | CALL | conf: 0.53
+2026-03-22 00:25:34 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:25:51 | INFO     | engine               | [SIGNAL] Recebido: #AXP_otc | CALL | conf: 0.53
+2026-03-22 00:25:51 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:25:51 | INFO     | engine               | [SIGNAL] Executando: #AXP_otc | CALL | conf: 0.53
+2026-03-22 00:25:51 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:25:53 | INFO     | engine               | [SIGNAL] Recebido: #INTC_otc | PUT | conf: 0.53
+2026-03-22 00:25:53 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:25:53 | INFO     | engine               | [SIGNAL] Executando: #INTC_otc | PUT | conf: 0.53
+2026-03-22 00:25:53 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:26:11 | INFO     | engine               | [SIGNAL] Recebido: AEDCNY_otc | PUT | conf: 0.62
+2026-03-22 00:26:11 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:26:11 | INFO     | engine               | [SIGNAL] Executando: AEDCNY_otc | PUT | conf: 0.62
+2026-03-22 00:26:11 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:26:15 | INFO     | engine               | Status: 1 usuários, 0 tarefas, 51 sinais, cache: 0.0%
+2026-03-22 00:26:22 | INFO     | engine               | [SIGNAL] Recebido: AUDCHF_otc | CALL | conf: 0.53
+2026-03-22 00:26:22 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:26:22 | INFO     | engine               | [SIGNAL] Executando: AUDCHF_otc | CALL | conf: 0.53
+2026-03-22 00:26:22 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:26:30 | INFO     | engine               | [Engine] payout_update recebido: 183 ativos
+2026-03-22 00:26:30 | INFO     | engine               | [Engine] Chamando update_all_assets com 183 ativos
+2026-03-22 00:26:30 | INFO     | engine               | [Engine] update_all_assets concluído
+2026-03-22 00:26:53 | INFO     | engine               | [SIGNAL] Recebido: AEDCNY_otc | PUT | conf: 0.53
+2026-03-22 00:26:53 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:26:53 | INFO     | engine               | [SIGNAL] Executando: AEDCNY_otc | PUT | conf: 0.53
+2026-03-22 00:26:53 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:27:09 | INFO     | engine               | [SIGNAL] Recebido: AEDCNY_otc | CALL | conf: 0.53
+2026-03-22 00:27:09 | INFO     | engine               | [SIGNAL] Usuários conectados: ['94736c7d-e00e-4df7-826b-cfeb4699f225']
+2026-03-22 00:27:09 | INFO     | engine               | [SIGNAL] Executando: AEDCNY_otc | CALL | conf: 0.53
+2026-03-22 00:27:09 | WARNING  | engine               | [SIGNAL] Nenhum usuário ativo encontrado (get_status retornou None ou disabled)
+2026-03-22 00:27:10 | INFO     | engine               | [Engine] payout_update recebido: 183 ativos
+2026-03-22 00:27:10 | INFO     | engine               | [Engine] Chamando update_all_assets com 183 ativos
+2026-03-22 00:27:10 | INFO     | engine               | [Engine] update_all_assets concluído
+2026-03-22 00:27:10 | INFO     | engine               | [Engine] payout_update recebido: 183 ativos
+2026-03-22 00:27:10 | INFO     | engine               | [Engine] Chamando update_all_assets com 183 ativos
+2026-03-22 00:27:10 | INFO     | engine               | [Engine] update_all_assets concluído
+2026-03-22 00:27:15 | INFO     | engine               | Status: 1 usuários, 0 tarefas, 54 sinais, cache: 0.0%
+2026-03-22 00:27:27 | INFO     | engine               | Parando TradingEngine...
+2026-03-22 00:27:27 | INFO     | engine               | [OK] AutotradeManager parado
+2026-03-22 00:27:28 | INFO     | engine               | TradingEngine parado

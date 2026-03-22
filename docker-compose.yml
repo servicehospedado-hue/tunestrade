@@ -1,0 +1,104 @@
+# Docker Compose para PocketOption Trading Backend
+# Inclui: Backend, PostgreSQL, Redis
+
+services:
+  # Banco de Dados PostgreSQL
+  postgres:
+    image: postgres:16-alpine
+    container_name: pocketoption-postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=trading_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - trading-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d trading_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # Backend Principal
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: pocketoption-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=production
+      - DEBUG=false
+      - DB_HOST=postgres  # PostgreSQL no Docker
+      - DB_PORT=5432
+      - DB_NAME=trading_db
+      - DB_USER=postgres
+      - DB_PASSWORD=root
+      - DB_ENABLED=true
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - NOTIFICATION_PROVIDER=${NOTIFICATION_PROVIDER:-firebase}
+      - FIREBASE_CREDENTIALS=${FIREBASE_CREDENTIALS}
+      # Monitoring Actives Settings
+      - MONITORING_ACTIVES_QUANTIDADE=${MONITORING_ACTIVES_QUANTIDADE:-30}
+      - MONITORING_ACTIVES_PAYOUT_MINIMO=${MONITORING_ACTIVES_PAYOUT_MINIMO:-70}
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./logs:/app/logs
+      - ./.env:/app/.env:ro
+    networks:
+      - trading-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+# Cache Redis (opcional)
+  redis:
+    image: redis:7-alpine
+    container_name: pocketoption-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis-data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - trading-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  postgres-data:
+    driver: local
+  redis-data:
+    driver: local
+
+networks:
+  trading-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

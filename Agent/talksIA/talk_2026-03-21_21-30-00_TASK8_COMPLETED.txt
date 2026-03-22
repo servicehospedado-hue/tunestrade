@@ -1,0 +1,51 @@
+TALK FILE - 2026-03-21 21:30:00
+TASK: 8 - Bug JWT_SECRET + "Nenhum usuário conectado" ao usar estratégia pessoal
+STATUS: COMPLETED
+
+=== PROBLEMA 1: JWT_SECRET warning no log ===
+CAUSA: .env não tinha JWT_SECRET definido (edições anteriores não persistiram).
+CORREÇÃO: .env reescrito com seção SEGURANÇA contendo:
+  JWT_SECRET=38f1fa43aabc47491616da76e1f0dc9f7dec41524283fa37b768a31911e6783c
+ARQUIVO: .env
+
+=== PROBLEMA 2: "Nenhum usuário conectado" ao usar estratégia pessoal ===
+DIAGNÓSTICO:
+- autotrade_manager.log: "Full refresh: 0 ativos" — nenhum usuário com autotrade=1 no banco
+- toggleStrategy() chamava api.toggleAutotrade(true, target.name) passando o NOME da estratégia pessoal
+  (ex: "Minha Estratégia") como strategy_id
+- autotrade_service._name_map só conhece 'scalping_5s' e 'trend_m1'
+- Nome literal "Minha Estratégia" era salvo no campo strategy_name do banco
+- strategy_manager tentava instanciar estratégia com esse nome → falha silenciosa
+- Resultado: autotrade=1 salvo mas WS nunca conectava corretamente
+
+CORREÇÃO: HomeScreen.tsx — toggleStrategy() agora passa 'scalping_5s' ao chamar toggleAutotrade
+  ANTES: api.toggleAutotrade(true, target.name)
+  DEPOIS: api.toggleAutotrade(true, 'scalping_5s')
+
+FLUXO CORRETO APÓS CORREÇÃO:
+1. App liga estratégia pessoal → chama toggleAutotrade(true, 'scalping_5s')
+2. Backend salva strategy_name='Scalping5s' + autotrade=1 no banco
+3. AutotradeManager detecta autotrade=1 → dispara _on_autotrade_enabled
+4. Engine conecta WS do usuário via AutotradeManager.connect_user()
+5. strategy_manager._execute_for_active_users() encontra o usuário ativo
+6. _get_user_custom_strategy(user_id, 'Scalping5s') busca estratégia pessoal ativa do usuário
+7. Instancia ScalpingStrategy com parâmetros customizados do banco
+8. Trades executam com a estratégia personalizada do usuário
+
+ARQUIVO: aplicativo/TunesTrade2/src/screens/HomeScreen.tsx
+
+=== CORREÇÃO ADICIONAL: load_dotenv no main.py ===
+CAUSA RAIZ DO WARNING: auth.py instancia APIAuthMiddleware() no nível do módulo.
+Quando Python importa as rotas (factory.py → auth.py), o load_dotenv() do settings.py
+ainda não foi executado — então os.getenv("JWT_SECRET") retorna vazio.
+
+CORREÇÃO: main.py agora chama load_dotenv() ANTES de qualquer outro import:
+  from dotenv import load_dotenv
+  load_dotenv()
+  import uvicorn  # e demais imports depois
+
+ARQUIVO: main.py
+
+=== AÇÃO NECESSÁRIA ===
+Reiniciar o servidor Python para que as correções sejam aplicadas.
+Comando: Ctrl+C no terminal do servidor, depois iniciar novamente.

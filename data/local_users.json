@@ -1,0 +1,12 @@
+{
+  "admin@gmail.com": {
+    "id": "f59cebbc-5e5f-4209-9ce6-d5c1e57ccc18",
+    "nome": "Administrador",
+    "email": "admin@gmail.com",
+    "senha": "$2b$12$WfU7L5eHL1kBvNFcjMW2N.I3slIqnsn6L/vwgnw1sXvVR4rFOCm6G",
+    "role": "admin",
+    "operator": "demo",
+    "data_criacao": "2026-03-17T18:12:34.443728",
+    "ultima_vez_ativo": "2026-03-17T18:12:34.443756"
+  }
+}

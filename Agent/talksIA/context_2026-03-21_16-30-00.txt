@@ -1,0 +1,171 @@
+================================================================================
+CONSOLIDAÇÃO DE TALKS — context_2026-03-21_16-30-00
+Período: 2026-03-15 → 2026-03-21
+Total de talks consolidados: 80
+================================================================================
+
+ÍNDICE RÁPIDO
+─────────────────────────────────────────────────────────────────────────────
+[01] 2026-03-15_19-30  IMPLEMENTATION  WS logs por usuário → logs/ws/{user_id}.log
+[02] 2026-03-15_19-35  IMPLEMENTATION  Payout reconnect a cada 5min (PAYOUT_RECONNECT_INTERVAL)
+[03] 2026-03-15_19-40  IMPLEMENTATION  Limpar logs/ no startup
+[04] 2026-03-15_20-00  EDIT            Remover SSID globais do docker-compose (multi-tenant)
+[05] 2026-03-15_20-01  BUGFIX          extra_headers → additional_headers (websockets 16.0)
+[06] 2026-03-15_20-04  BUGFIX          Remover .closed (websockets 16.0 não tem)
+[07] 2026-03-15_20-06  IMPLEMENTATION  Docker + Python 3.13 + websockets 16.0 compat
+[08] 2026-03-15_20-12  IMPLEMENTATION  Cache Redis para payout (TTL 300s)
+[09] 2026-03-15_20-50  IMPLEMENTATION  monitoring_actives com payout mínimo e rebalanceamento
+[10] 2026-03-15_21-44  BUGFIX          Formato subfor/unsubfor/changeSymbol correto
+[11] 2026-03-15_22-05  IMPLEMENTATION  Tipos de interação no IA.txt
+[12] 2026-03-15_22-14  EDIT            IA.txt v1.3 — eliminar redundâncias
+[13] 2026-03-15_22-20  EDIT            IA.txt — consolidação automática a cada 20 talks
+[14] 2026-03-16_19-00  IMPLEMENTATION  AutotradeMonitor com cache TTL + webhooks
+[15] 2026-03-16_19-25  REFACTOR        AutotradeChecker separado em src/core/
+[16] 2026-03-16_19-26  MOVE            AutotradeChecker → src/managers/
+[17] 2026-03-16_19-45  BUGFIX          Formato símbolo OTC com prefixo # (arquivo corrompido)
+[18] 2026-03-16_19-55  REFACTOR        Unificar AutotradeChecker + TradeExecutor (sem duplicação)
+[19-33] 2026-03-17     BUGFIX/IMPL     Múltiplos fixes de WebSocket, conexão, estratégias
+[34-69] 2026-03-18/19  BUGFIX/IMPL     Martingale, Soros, TradeExecutor, UI, banco de dados
+[70] 2026-03-20_03-30  BUGFIX          Martingale — losses não detectados (profit=0 + status=LOSE)
+[71] 2026-03-20_05-15  BUGFIX          Martingale — callback recebia placeholder em vez de OrderResult
+[72] 2026-03-21_15-30  BUGFIX          Martingale — placeholder ignorado, callback mantido para OrderResult real
+[73] 2026-03-21_16-00  BUGFIX          (fix adicional tradeexecutor)
+[74] 2026-03-21_16-00  SECURITY        Camadas de segurança: JWT, CORS, brute force, headers, auditoria
+[75] 2026-03-21_17-30  TASK9           user_strategies tabela + CRUD + integração HomeScreen
+[76-81] 2026-03-21     FEATURE/BUGFIX  Features e fixes adicionais do dia 21
+
+================================================================================
+ESTATÍSTICAS
+================================================================================
+
+Total de talks: 80
+Por status: COMPLETED: 80
+Por tipo: BUGFIX ~35 | IMPLEMENTATION/FEATURE ~25 | REFACTOR ~5 | ANALYSIS ~4 | EDIT ~5 | SECURITY 1 | CLEANUP 1 | MOVE 1
+
+================================================================================
+ARQUIVOS MAIS MODIFICADOS
+================================================================================
+
+src/managers/tradeexecutor_manager.py     — Martingale, Soros, callbacks, placeholder fix
+src/pocketoption/websocket_client.py      — websockets 16.0 compat, subfor/unsubfor
+src/pocketoption/client.py                — WS logs, payout, subscribe/unsubscribe
+src/managers/strategy_manager.py          — estratégias customizadas por usuário
+src/api/routes/factory.py                 — CORS, security headers, rotas
+src/api/auth.py                           — JWT, brute force guard, API key
+src/api/routes/auth.py                    — login, registro, auditoria
+src/api/services/auth_service.py          — autenticação, bcrypt, sync local→postgres
+src/database/models.py                    — UserStrategy, User, AutotradeConfig
+src/database/user_strategy_dao.py         — CRUD user_strategies
+src/api/routes/user_strategies.py         — rotas /user-strategies
+aplicativo/TunesTrade2/src/screens/HomeScreen.tsx
+aplicativo/TunesTrade2/src/screens/CreateStrategyScreen.tsx
+aplicativo/TunesTrade2/src/screens/SplashScreen.tsx
+aplicativo/TunesTrade2/src/services/api.ts
+aplicativo/TunesTrade2/src/services/userStrategyService.ts
+.env                                      — JWT_SECRET, CORS_ORIGINS, segurança
+
+================================================================================
+FUNCIONALIDADES CRIADAS/CORRIGIDAS
+================================================================================
+
+BACKEND:
+  ✅ Sistema de logs WS por usuário (logs/ws/{user_id}.log)
+  ✅ Payout reconnect automático a cada 5min
+  ✅ Cache Redis para payout (TTL 300s)
+  ✅ monitoring_actives com payout mínimo e rebalanceamento
+  ✅ AutotradeMonitor com cache TTL + webhooks
+  ✅ AutotradeChecker (orquestrador)
+  ✅ TradeExecutor refatorado (usa ConnectionManager)
+  ✅ Tabela user_strategies com indicadores e parâmetros JSON
+  ✅ UserStrategyDAO com CRUD + set_active
+  ✅ Rotas /user-strategies (GET, POST, PUT, DELETE, PATCH toggle)
+  ✅ strategy_manager integra estratégias customizadas por usuário
+  ✅ Martingale: detecção correta de win/loss via OrderStatus
+  ✅ Martingale: placeholder ignorado, callback mantido para OrderResult real
+  ✅ JWT_SECRET seguro (secrets.token_hex(32))
+  ✅ CORS configurável via CORS_ORIGINS no .env
+  ✅ SecurityHeadersMiddleware (X-Frame-Options, CSP, etc.)
+  ✅ LoginBruteForceGuard (5 tentativas / 15min → bloqueio 30min)
+  ✅ Validação de força de senha no registro
+  ✅ Log de auditoria (LOGIN_SUCCESS, SAVE_SSID, OPERATOR_CHANGE)
+  ✅ API Key via query param restrita a /ws
+
+FRONTEND (React Native):
+  ✅ SplashScreen: barra cinza removida
+  ✅ HomeScreen: toggle estratégia pessoal desativa sistema (e vice-versa)
+  ✅ HomeScreen: estratégias carregadas do banco, CRUD persistido
+  ✅ HomeScreen: exibe quantidade de indicadores (não nomes)
+  ✅ CreateStrategyScreen: sliders com arrasto real (onResponderMove)
+  ✅ CreateStrategyScreen: todos os parâmetros de cada indicador configuráveis
+  ✅ api.ts: método patch adicionado
+
+================================================================================
+BUGS CRÍTICOS CORRIGIDOS
+================================================================================
+
+[CRÍTICO] Martingale nunca resetava no win
+  Causa: callback recebia placeholder {'_placeholder': True} e se auto-removia
+  Fix: verificar placeholder ANTES de remover callback
+  Arquivo: src/managers/tradeexecutor_manager.py
+
+[CRÍTICO] Martingale nunca acionava em loss
+  Causa: profit=0 em demo → 'draw' → simulação convertia para 'win'
+  Fix: usar data.status (OrderStatus.WIN/LOSE) em vez de profit
+  Arquivo: src/managers/tradeexecutor_manager.py
+
+[ALTO] Toggle estratégia pessoal não desativava estratégia do sistema
+  Causa: toggleStrategy() só atualizava estado local
+  Fix: ao ligar pessoal → desliga sistema via API; ao ligar sistema → desliga pessoais
+  Arquivo: aplicativo/TunesTrade2/src/screens/HomeScreen.tsx
+
+[MÉDIO] Barra cinza no splash screen
+  Causa: StatusBar translucent + container sem StatusBar.currentHeight
+  Fix: remover translucent, usar totalHeight = height + StatusBar.currentHeight
+  Arquivo: aplicativo/TunesTrade2/src/screens/SplashScreen.tsx
+
+================================================================================
+SEGURANÇA — MELHORIAS IMPLEMENTADAS (2026-03-21)
+================================================================================
+
+1. JWT_SECRET: gerado com secrets.token_hex(32), salvo no .env
+2. API Key query param: restrito a /ws apenas
+3. CORS: configurável via CORS_ORIGINS no .env (warning se *)
+4. Headers HTTP: X-Content-Type-Options, X-Frame-Options, X-XSS-Protection,
+   Referrer-Policy, Permissions-Policy
+5. Brute force: LoginBruteForceGuard (5 tentativas → bloqueio 30min)
+6. Força de senha: mínimo 8 chars, 1 maiúscula, 1 número
+7. Auditoria: [AUDIT] tags nos logs para ações sensíveis
+8. Stack trace: erro 500 não vaza detalhes internos
+
+PENDÊNCIAS DE SEGURANÇA (produção futura):
+  - Ativar HSTS quando HTTPS configurado
+  - Refresh tokens + blacklist JWT (Redis)
+  - CORS_ORIGINS com origens reais
+  - DB_PASSWORD forte (atual: root)
+  - ENVIRONMENT=production, DEBUG=false
+
+================================================================================
+TAREFAS INCOMPLETAS / TODO
+================================================================================
+
+  - [ ] Monitorar logs após reiniciar para confirmar wins/losses detectados
+  - [ ] Usuário precisa salvar Soros novamente no frontend (banco tem soros=False)
+  - [ ] Ativar HSTS quando HTTPS estiver configurado
+  - [ ] Definir CORS_ORIGINS com origens reais em produção
+  - [ ] Trocar DB_PASSWORD=root por senha forte
+  - [ ] Mudar ENVIRONMENT=production e DEBUG=false em produção
+
+================================================================================
+LIÇÕES APRENDIDAS
+================================================================================
+
+  - PocketOption envia successcloseOrder como placeholder JSON + frame binário separado
+    → callback deve verificar placeholder ANTES de se auto-remover
+  - PocketOption demo retorna profit=0 para losses (não negativo)
+    → usar OrderStatus em vez de profit para determinar resultado
+  - Hacks de simulação (SIMULATE_DEMO_WINS) mascaram bugs reais — remover ASAP
+  - JWT_SECRET hardcoded é vulnerabilidade crítica — sempre usar ENV + fallback seguro
+  - CORS allow_origins=["*"] aceitável em dev, perigoso em produção
+  - API Key em query param aparece em logs de servidor — restringir a WebSocket
+
+================================================================================

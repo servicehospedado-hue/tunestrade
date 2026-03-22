@@ -1,0 +1,20 @@
+TASK 5: Log mostra nome real da estratégia do usuário
+STATUS: COMPLETED
+TIMESTAMP: 2026-03-22 02:30:00
+
+PROBLEMA:
+- Log mostrava: [STRATEGY] #AAPL_otc | Scalping5s (customizada) | user=... | NEUTRAL
+- Deveria mostrar: [STRATEGY] #AAPL_otc | Test (customizada) | user=... | NEUTRAL
+
+CAUSA:
+- _run_strategy_for_asset usava `strategy_name` no log mesmo quando havia custom_strategy
+- DynamicStrategy.name retorna "Scalping5s" (hardcoded para compatibilidade com trade_executor)
+- DynamicStrategy já tinha `_strategy_label` com o nome real (ex: "Test")
+
+CORREÇÃO:
+- src/managers/strategy_manager.py, método _run_strategy_for_asset:
+  - Adicionado: display_name = getattr(custom_strategy, '_strategy_label', strategy_name) if custom_strategy else strategy_name
+  - Log principal e log do indicator_manager agora usam display_name em vez de strategy_name
+
+ARQUIVOS MODIFICADOS:
+- src/managers/strategy_manager.py

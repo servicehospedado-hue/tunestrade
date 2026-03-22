@@ -1,0 +1,42 @@
+TALK FILE - 2026-03-22 02:00:00
+TASK: Remoção do TaskManager + Cache de DynamicStrategy
+STATUS: COMPLETED
+
+=== DIAGNÓSTICO DO FLUXO DE DADOS ===
+Fluxo confirmado:
+  WS PocketOption (conta monitoramento)
+    → client._on_stream_update() → append_tick()
+    → DataCollectorManager (buffer memória → flush arquivo a cada 1s)
+    → strategy_manager._execute_for_asset() → get_asset_data() (lê arquivo)
+    → DynamicStrategy.analyze() / ScalpingStrategy.analyze()
+
+Dados de preço NÃO vão ao banco PostgreSQL.
+Ficam em arquivos CSV locais (data/assets/*.csv).
+Banco só é usado para configs de usuário (autotrade, estratégias pessoais).
+
+=== TASKMANAGER REMOVIDO ===
+Era dead code — nunca chamado no fluxo real de trading.
+O strategy_manager calcula indicadores diretamente via strategy.analyze(df).
+Arquivos modificados:
+- src/managers/__init__.py (removido import/export)
+- src/__init__.py (removido import/export)
+- src/core/engine.py (removido init, start, stop, stats, system_health)
+- src/managers/indicator_manager.py (__init__ sem task_manager, calculate_indicator simplificado)
+
+=== CACHE DE DYNAMICSTRATEGY ===
+Problema: _get_user_custom_strategy fazia query no banco a cada ciclo × cada asset
+  1000 usuários × 10 assets = 10.000 queries/ciclo de 5s
+
+Solução: cache de 30s por usuário em _user_strategy_cache
+  - Primeira chamada: query no banco, instancia DynamicStrategy, salva no cache
+  - Chamadas seguintes (dentro de 30s): retorna instância do cache
+  - Cache invalidado automaticamente ao: update, toggle, delete de estratégia
+
+Novo método: invalidate_user_strategy_cache(user_id)
+  - Chamado pelas rotas PUT, PATCH /toggle, DELETE de user_strategies
+  - factory.py injeta strategy_manager nas rotas via set_strategy_manager()
+
+Arquivos modificados:
+- src/managers/strategy_manager.py (_user_strategy_cache, invalidate_user_strategy_cache)
+- src/api/routes/user_strategies.py (set_strategy_manager, invalidação nos endpoints)
+- src/api/routes/factory.py (injeta strategy_manager)

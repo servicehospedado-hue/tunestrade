@@ -1,0 +1,22 @@
+TASK: Fix Parabolic SAR - Parâmetro obrigatório ausente: af
+STATUS: COMPLETED
+TIMESTAMP: 2026-03-22 03:00:00
+
+PROBLEMA:
+- Log spammando: [DynamicStrategy] Falha ao instanciar 'parabolic_sar': Parâmetro obrigatório ausente: af
+- Usuário salvou estratégia com sliderParams: [{"name": "initial_af", "value": 0.02}, {"name": "max_af", "value": 0.2}]
+- ParabolicSARIndicator.required_params = ["af", "max_af"]
+- Frontend usa "initial_af" como nome do slider, mas o indicador interno espera "af"
+
+CAUSA RAIZ:
+- Mismatch de nomenclatura entre frontend (initial_af) e backend (af)
+- DynamicStrategy.setup_indicators passava os params do sliderParams diretamente sem tradução
+
+CORREÇÃO:
+- src/strategies/dynamic.py: adicionado _PARAM_ALIASES dict de classe
+  - {"parabolic_sar": {"initial_af": "af"}}
+- setup_indicators aplica aliases antes de chamar IndicatorFactory.create()
+- Se "initial_af" está em params e "af" não está → renomeia para "af"
+
+ARQUIVOS MODIFICADOS:
+- src/strategies/dynamic.py

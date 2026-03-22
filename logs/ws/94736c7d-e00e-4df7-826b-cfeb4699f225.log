@@ -1,0 +1,253 @@
+2026-03-22 00:16:14 | INFO     | [CONNECT] Starting connection...
+
+================================================================================
+WebSocket Connection Log
+Connection ID: websocket_6854882e1963
+Connection Type: websocket
+User: 94736c7d-e00e-4df7-826b-cfeb4699f225
+Created: 2026-03-22T00:16:14.944992
+Log File: 94736c7d-e00e-4df7-826b-cfeb4699f225.log
+================================================================================
+
+[2026-03-22T00:16:14.945375] [INIT] Iniciando conexão
+  Data: {"ssid_preview": "42[\"auth\",{\"session\":\"1mjc8git...", "is_demo": true, "user_name": "94736c7d-e00e-4df7-826b-cfeb4699f225", "persistent": false}
+2026-03-22 00:16:16 | INFO     | [RECV] {'raw': '451-["updateAssets",{"_placeholder":true,"num":0}]'}
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #AAPL: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #AAPL_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #AXP: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #AXP_otc: 80%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #BA: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #BA_otc: 61%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #CSCO: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #CSCO_otc: 20%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #FB: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #FB_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #INTC: 25%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #INTC_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #JNJ: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #JNJ_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #JPM: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #MCD: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #MCD_otc: 39%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #MSFT: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #MSFT_otc: 70%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #PFE: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #PFE_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #TSLA: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #TSLA_otc: 85%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #XOM: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] #XOM_otc: 52%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] 100GBP: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] 100GBP_otc: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] ADA-USD_otc: 33%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] AEDCNY_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] AEX25: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] AMD_otc: 70%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] AMZN_otc: 90%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] AUDCAD: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] AUDCAD_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] AUDCHF: 47%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] AUDCHF_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] AUDJPY: 44%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] AUDJPY_otc: 69%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] AUDNZD_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] AUDUSD: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] AUDUSD_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] AUS200: 37%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] AUS200_otc: 67%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] AVAX_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] BABA: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] BABA_otc: 67%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] BCHEUR: 15%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] BCHGBP: 15%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] BCHJPY: 15%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] BHDCNY_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] BITB_otc: 37%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] BNB-USD_otc: 58%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] BTCGBP: 15%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] BTCJPY: 15%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] BTCUSD: 15%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] BTCUSD_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] CAC40: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] CADCHF: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] CADCHF_otc: 84%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] CADJPY: 43%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] CADJPY_otc: 61%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] CHFJPY: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] CHFJPY_otc: 67%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] CHFNOK_otc: 37%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] CITI: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] CITI_otc: 46%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] COIN_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] D30EUR: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] D30EUR_otc: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] DASH_USD: 25%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] DJI30: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] DJI30_otc: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] DOGE_otc: 57%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] DOTUSD_otc: 55%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] E35EUR: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] E35EUR_otc: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] E50EUR: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] E50EUR_otc: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] ETHUSD: 40%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] ETHUSD_otc: 39%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] EURAUD: 43%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] EURCAD: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] EURCHF: 46%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] EURCHF_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] EURGBP: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] EURGBP_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] EURHUF_otc: 39%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] EURJPY: 58%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] EURJPY_otc: 86%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] EURNZD_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] EURRUB_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] EURTRY_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] EURUSD: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] EURUSD_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] F40EUR: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] F40EUR_otc: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] FDX_otc: 79%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] GBPAUD: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] GBPAUD_otc: 63%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] GBPCAD: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] GBPCHF: 39%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] GBPJPY: 58%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] GBPJPY_otc: 42%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] GBPUSD: 48%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] GBPUSD_otc: 35%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] GME_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] H33HKD: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] IRRUSD_otc: 91%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] JODCNY_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] JPN225: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] JPN225_otc: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] KESUSD_otc: 86%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] LBPUSD_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] LINK_otc: 90%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] LNKUSD: 15%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] LTCUSD_otc: 22%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] MADUSD_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] MARA_otc: 76%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] MATIC_otc: 32%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] NASUSD: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] NASUSD_otc: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] NFLX: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] NFLX_otc: 77%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] NGNUSD_otc: 27%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] NZDJPY_otc: 77%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] NZDUSD_otc: 54%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] OMRCNY_otc: 26%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] PLTR_otc: 70%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] QARCNY_otc: 87%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] SARCNY_otc: 84%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] SMI20: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] SOL-USD_otc: 81%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] SP500: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] SP500_otc: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] SYPUSD_otc: 60%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] TNDUSD_otc: 73%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] TON-USD_otc: 23%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] TRX-USD_otc: 68%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] UAHUSD_otc: 66%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] UKBrent: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] UKBrent_otc: 80%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USCrude: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USCrude_otc: 80%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDARS_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDBDT_otc: 33%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDBRL_otc: 80%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDCAD: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDCAD_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDCHF: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDCHF_otc: 57%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDCLP_otc: 70%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDCNH_otc: 72%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDCOP_otc: 71%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDDZD_otc: 92%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDEGP_otc: 44%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDIDR_otc: 74%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDINR_otc: 47%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDJPY: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDJPY_otc: 67%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDMXN_otc: 41%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDMYR_otc: 72%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDPHP_otc: 74%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDPKR_otc: 86%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDRUB_otc: 88%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDSGD_otc: 85%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDTHB_otc: 74%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] USDVND_otc: 82%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] VISA_otc: 71%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] VIX_otc: 70%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] XAGEUR: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] XAGUSD: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] XAGUSD_otc: 80%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] XAUEUR: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] XAUUSD: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] XAUUSD_otc: 80%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] XNGUSD: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] XNGUSD_otc: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] XPDUSD: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] XPDUSD_otc: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] XPTUSD: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] XPTUSD_otc: 45%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] YERUSD_otc: 50%
+2026-03-22 00:16:16 | INFO     | [PAYOUT] ZARUSD_otc: 71%
+2026-03-22 00:16:16 | INFO     | [RECV] {'raw': '451-["successauth",{"_placeholder":true,"num":0}]'}
+2026-03-22 00:16:16 | INFO     | [AUTHENTICATED] {'_placeholder': True, 'num': 0}
+2026-03-22 00:16:16 | INFO     | [RECV] {'raw': '451-["updateOpenedDeals",{"_placeholder":true,"num":0}]'}
+2026-03-22 00:16:16 | INFO     | [RECV] {'raw': '451-["successupdatePending",{"_placeholder":true,"num":0}]'}
+2026-03-22 00:16:16 | INFO     | [RECV] {'raw': '451-["successupdateBalance",{"_placeholder":true,"num":0}]'}
+2026-03-22 00:16:16 | INFO     | [RECV] {'raw': '451-["updateCharts",{"_placeholder":true,"num":0}]'}
+2026-03-22 00:16:16 | INFO     | [RECV] {'raw': '451-["updateClosedDeals",{"_placeholder":true,"num":0}]'}
+[2026-03-22T00:16:16.376658] [CONNECTED] Conexão estabelecida em DEMO
+  Data: {"url": "wss://demo-api-eu.po.market/socket.io/?EIO=4&transport=websocket", "region": "DEMO", "total_reconnects": 0}
+[2026-03-22T00:16:16.600984] [RECV] Mensagem recebida (61 bytes)
+  Data: {"preview": "{'raw': '451-[\"updateAssets\",{\"_placeholder\":true,\"num\":0}]'}", "size": 61}
+[2026-03-22T00:16:16.601014] [RECV_RAW] Mensagem recebida (61 bytes)
+  Data: {"preview": "{'raw': '451-[\"updateAssets\",{\"_placeholder\":true,\"num\":0}]'}", "size": 61}
+[2026-03-22T00:16:16.958284] [RECV] Mensagem recebida (60 bytes)
+  Data: {"preview": "{'raw': '451-[\"successauth\",{\"_placeholder\":true,\"num\":0}]'}", "size": 60}
+[2026-03-22T00:16:16.958311] [RECV_RAW] Mensagem recebida (60 bytes)
+  Data: {"preview": "{'raw': '451-[\"successauth\",{\"_placeholder\":true,\"num\":0}]'}", "size": 60}
+[2026-03-22T00:16:16.959062] [AUTH] Autenticação bem-sucedida
+  Data: {"ssid_preview": "42[\"auth\",{\"session\":\"1mjc8git...", "user_name": "94736c7d-e00e-4df7-826b-cfeb4699f225", "is_demo": true}
+[2026-03-22T00:16:16.961127] [RECV] Mensagem recebida (66 bytes)
+  Data: {"preview": "{'raw': '451-[\"updateOpenedDeals\",{\"_placeholder\":true,\"num\":0}]'}", "size": 66}
+[2026-03-22T00:16:16.961170] [RECV_RAW] Mensagem recebida (66 bytes)
+  Data: {"preview": "{'raw': '451-[\"updateOpenedDeals\",{\"_placeholder\":true,\"num\":0}]'}", "size": 66}
+[2026-03-22T00:16:16.963263] [RECV] Mensagem recebida (69 bytes)
+  Data: {"preview": "{'raw': '451-[\"successupdatePending\",{\"_placeholder\":true,\"num\":0}]'}", "size": 69}
+[2026-03-22T00:16:16.963297] [RECV_RAW] Mensagem recebida (69 bytes)
+  Data: {"preview": "{'raw': '451-[\"successupdatePending\",{\"_placeholder\":true,\"num\":0}]'}", "size": 69}
+[2026-03-22T00:16:16.965280] [RECV] Mensagem recebida (69 bytes)
+  Data: {"preview": "{'raw': '451-[\"successupdateBalance\",{\"_placeholder\":true,\"num\":0}]'}", "size": 69}
+[2026-03-22T00:16:16.965315] [RECV_RAW] Mensagem recebida (69 bytes)
+  Data: {"preview": "{'raw': '451-[\"successupdateBalance\",{\"_placeholder\":true,\"num\":0}]'}", "size": 69}
+[2026-03-22T00:16:16.968669] [RECV] Mensagem recebida (61 bytes)
+  Data: {"preview": "{'raw': '451-[\"updateCharts\",{\"_placeholder\":true,\"num\":0}]'}", "size": 61}
+[2026-03-22T00:16:16.968712] [RECV_RAW] Mensagem recebida (61 bytes)
+  Data: {"preview": "{'raw': '451-[\"updateCharts\",{\"_placeholder\":true,\"num\":0}]'}", "size": 61}
+[2026-03-22T00:16:16.971311] [RECV] Mensagem recebida (66 bytes)
+  Data: {"preview": "{'raw': '451-[\"updateClosedDeals\",{\"_placeholder\":true,\"num\":0}]'}", "size": 66}
+[2026-03-22T00:16:16.971375] [RECV_RAW] Mensagem recebida (66 bytes)
+  Data: {"preview": "{'raw': '451-[\"updateClosedDeals\",{\"_placeholder\":true,\"num\":0}]'}", "size": 66}
+2026-03-22 00:16:22 | INFO     | [DISCONNECT] Closing connection
+[2026-03-22T00:16:22.130393] [DISCONNECT] Closing connection
+[2026-03-22T00:16:22.130402] [DISCONNECT] Conexão encerrada: User requested disconnect
+
+================================================================================
+CONNECTION CLOSED - SUMMARY
+================================================================================
+Connection ID: websocket_6854882e1963
+Total Messages Sent: 0
+Total Messages Received: 7
+Total Bytes Sent: 0
+Total Bytes Received: 452
+Total Reconnects: 0
+Total Errors: 0
+Closed At: 2026-03-22T00:16:22.130402
+================================================================================
+

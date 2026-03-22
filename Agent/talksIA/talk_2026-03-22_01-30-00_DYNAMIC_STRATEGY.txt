@@ -1,0 +1,39 @@
+TALK FILE - 2026-03-22 01:30:00
+TASK: Estratégia dinâmica do usuário usando indicadores exatos escolhidos
+STATUS: COMPLETED
+
+=== DIAGNÓSTICO ===
+- Logs confirmaram: sistema funcionando, trades executados (WIN $0.92 x2)
+- Problema: _get_user_custom_strategy instanciava ScalpingStrategy com parâmetros
+  mapeados manualmente — mas ScalpingStrategy tem indicadores HARDCODED (RSI, EMA,
+  Stochastic, BB, MACD, Momentum)
+- Usuário criou estratégia "Test" com SMA, EMA, MACD, Parabolic SAR
+- Log mostrava "RSI bearish + Stochastic bearish + BB bearish" — indicadores ERRADOS
+- Os indicadores do usuário eram ignorados; só os parâmetros numéricos eram passados
+
+=== SOLUÇÃO ===
+Criada src/strategies/dynamic.py — DynamicStrategy:
+- Recebe indicators_config (lista de dicts do banco user_strategies.indicators)
+- Usa IndicatorFactory.create(type, params) para instanciar cada indicador
+- Parâmetros: prioriza sliderParams (valores ajustados pelo usuário) sobre parameters
+- analyze(): calcula cada indicador, coleta signal (buy/sell/neutral), vota por maioria
+- Confiança = ratio de concordância (ex: 3/4 indicadores bearish = 0.75)
+- min_confidence=0.40 (mais permissivo que Scalping5s=0.70)
+- name retorna "Scalping5s" para manter compatibilidade com trade_executor
+
+_get_user_custom_strategy reescrito:
+- Antes: mapeava params → ScalpingStrategy/TrendM1Strategy (indicadores fixos)
+- Depois: instancia DynamicStrategy com indicators_config completo do banco
+
+=== DELAY DE 5-10s ===
+Normal — é o tempo de conexão WS da PocketOption.
+autotrade ativado 22:10:59 → WS conectado 22:11:01 (2s)
+Primeiro sinal chegou 22:13:23 — depende do mercado, não é bug.
+
+=== ARQUIVOS MODIFICADOS ===
+- src/strategies/dynamic.py (NOVO)
+- src/strategies/__init__.py (exporta DynamicStrategy)
+- src/managers/strategy_manager.py (_get_user_custom_strategy reescrito)
+
+=== AÇÃO NECESSÁRIA ===
+Reiniciar o servidor para aplicar as mudanças.

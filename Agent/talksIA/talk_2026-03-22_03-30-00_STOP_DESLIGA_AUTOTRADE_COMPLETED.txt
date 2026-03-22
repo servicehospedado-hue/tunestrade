@@ -1,0 +1,39 @@
+TASK: Stop atingido deve desligar autotrade e refletir no frontend
+STATUS: COMPLETED
+TIMESTAMP: 2026-03-22 03:30:00
+
+PROBLEMAS REPORTADOS:
+1. Stop definido mas trade executava mesmo assim
+2. Ao atingir stop, autotrade deveria desligar (como se nunca tivesse ligado)
+3. Botão power no frontend deveria voltar para OFF
+
+CAUSA RAIZ:
+- stop_triggered=True só existia em memória (UserTradeState) — não persistia no banco
+- autotrade=1 continuava no banco, então list_active_configs() retornava o usuário como ativo
+- Nenhuma notificação era enviada ao frontend quando stop era atingido
+- Frontend não tinha mecanismo para detectar mudança de estado
+
+CORREÇÕES:
+
+1. src/managers/tradeexecutor_manager.py (_process_trade_result):
+   - Quando stop hard é atingido: chama autotrade_dao.update_config(autotrade=0) para desligar no banco
+   - Invalida cache da estratégia do usuário no strategy_manager
+   - Agora list_active_configs() não retorna mais o usuário após stop
+
+2. src/api/services/autotrade_service.py (get_status):
+   - Adicionado stop_triggered e stop_type na resposta do /autotrade/status
+
+3. src/api/schemas/autotrade.py (AutotradeStatusResponse):
+   - Adicionados campos: stop_triggered: bool = False, stop_type: Optional[str] = None
+
+4. aplicativo/TunesTrade2/src/screens/HomeScreen.tsx:
+   - Adicionado useRef para intervalo de polling
+   - Polling a cada 10s via syncAutotradeStatus()
+   - Se stop_triggered=True e enabled=False: seta todos os botões para OFF
+   - Se enabled=True: garante que o botão correto está ON
+
+ARQUIVOS MODIFICADOS:
+- src/managers/tradeexecutor_manager.py
+- src/api/services/autotrade_service.py
+- src/api/schemas/autotrade.py
+- aplicativo/TunesTrade2/src/screens/HomeScreen.tsx

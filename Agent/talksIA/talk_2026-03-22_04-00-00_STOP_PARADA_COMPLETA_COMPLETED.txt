@@ -1,0 +1,28 @@
+TASK: Stop atingido deve parar análise, desligar autotrade e desconectar WS
+STATUS: COMPLETED
+TIMESTAMP: 2026-03-22 04:00:00
+
+PROBLEMA:
+- Log mostrava: stop 'gain' ativo — trade bloqueado (repetindo infinitamente)
+- autotrade=1 continuava no banco → list_active_configs() retornava o usuário
+- strategy_manager continuava analisando a estratégia do usuário
+- WS da corretora continuava conectado
+- Causa: stop_triggered=True só existia em memória, banco não era atualizado
+
+SOLUÇÃO:
+Criado método _handle_stop_triggered(user_id, stop_type) no TradeExecutor que:
+1. Salva autotrade=0 no banco → list_active_configs() para de retornar o usuário
+2. Invalida cache da estratégia no strategy_manager → para de analisar
+3. Desconecta o WebSocket da corretora via connection_manager.disconnect()
+4. Remove estado em memória via unregister_user()
+
+PONTOS DE CHAMADA:
+1. _load_session_state: quando carrega stop_triggered=True do banco (sessão anterior)
+   → asyncio.create_task(_handle_stop_triggered) imediatamente
+2. _execute_for_user: quando state.stop_triggered bloqueia o trade
+   → asyncio.create_task(_handle_stop_triggered) em vez de só logar
+3. _process_trade_result: quando stop é detectado após resultado de trade
+   → asyncio.create_task(_handle_stop_triggered) (substituiu lógica inline anterior)
+
+ARQUIVOS MODIFICADOS:
+- src/managers/tradeexecutor_manager.py
